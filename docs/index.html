@@ -149,7 +149,8 @@
         <a class="boton boton-linea" href="transparencia.html">Ver a dónde va cada peso</a>
       </div>
 
-      <p class="lema sube" style="animation-delay:.3s">«Nuestra niñez en situación vulnerable nos necesita»</p>
+      <!-- El lema se edita en assets/js/contenido.js → lema -->
+      <p class="lema sube" style="animation-delay:.3s" data-lema>«Nuestra niñez en situación vulnerable nos necesita»</p>
     </div>
 
     <div class="kintsugi" data-kintsugi data-fondo="#e4eef7"></div>
@@ -200,42 +201,14 @@
         <p>Cada programa atiende un momento distinto de la vida de una niña o un niño en situación vulnerable.</p>
       </div>
 
-      <div class="rejilla rejilla-4">
-        <article class="tarjeta">
-          <div class="icono" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.4-7 10-7 10Z" stroke="#0c2246" stroke-width="1.8"/><path d="M8 11h2l1.2-2.5L13 13l1-2h2" stroke="#f16047" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Intervención hospitalaria</h3>
-          <p>Acompañamiento psicosocial y apoyo integral a niñas y niños hospitalizados.</p>
-          <span class="lugar">Hospital Civil Nuevo «Dr. Juan I. Menchaca»</span>
-        </article>
-
-        <article class="tarjeta">
-          <div class="icono" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-5 9 5-9 5-9-5Z" stroke="#0c2246" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" stroke="#0c2246" stroke-width="1.8"/><path d="M21 9v6" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Talleres y educación</h3>
-          <p>Derechos humanos, prevención de violencias y sensibilización en escuelas y comunidades.</p>
-          <span class="lugar">Escuelas y comunidades</span>
-        </article>
-
-        <article class="tarjeta">
-          <div class="icono" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#0c2246" stroke-width="1.8"/><circle cx="17" cy="10" r="2.4" stroke="#0c2246" stroke-width="1.8"/><path d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M14.5 15.2c2.3.2 4.3 1.4 4.9 3.8" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Familias y cuidadores</h3>
-          <p>Capacitación en disciplina positiva y crianza sin violencia: el primer círculo de protección.</p>
-          <span class="lugar">Talleres a madres, padres y tutores</span>
-        </article>
-
-        <article class="tarjeta">
-          <div class="icono" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v10M12 13c0 3-2 4-4.5 4M12 13c0 3 2 4 4.5 4" stroke="#0c2246" stroke-width="1.8" stroke-linecap="round"/><path d="M5 21h14M8 6l4-3 4 3" stroke="#f16047" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3>Donaciones dirigidas</h3>
-          <p>Cada apoyo se destina según un diagnóstico situacional, no según la urgencia aparente.</p>
-          <span class="lugar">Con redes de otras asociaciones civiles</span>
-        </article>
+      <!-- 🧩 Las 4 tarjetas se generan solas desde
+           assets/js/contenido.js → programas -->
+      <div class="rejilla rejilla-4" data-programas>
+        <noscript>
+          <p>Nuestros programas: intervención hospitalaria, talleres en escuelas,
+             capacitación a familias y donaciones dirigidas por diagnóstico.
+             Conócelos en la página «Qué hacemos».</p>
+        </noscript>
       </div>
 
       <p style="margin-top:32px"><a class="boton boton-claro" href="que-hacemos.html">Ver cada programa a detalle</a></p>

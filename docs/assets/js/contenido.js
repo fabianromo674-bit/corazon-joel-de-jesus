@@ -8,10 +8,20 @@
 
      1) CONTACTO      → correo, teléfono, Facebook  (cambiar aquí
                         lo actualiza en TODAS las páginas de golpe)
-     2) CIFRAS        → los números de la página de inicio
-     3) BOLETINES     → los documentos de transparencia
-     4) HISTORIAS     → los testimonios de impacto
-     5) INFOGRAFÍAS   → la galería de "Derechos en Formato Ciudadano"
+     2) LEMA          → la frase entre comillas de la portada
+     3) CIFRAS        → los números de la página de inicio
+     4) PROGRAMAS     → los 4 programas (tarjetas del inicio y
+                        secciones de la página "Qué hacemos")
+     5) BOLETINES     → los documentos de transparencia
+     6) HISTORIAS     → los testimonios de impacto
+     7) INFOGRAFÍAS   → la galería de "Derechos en Formato Ciudadano"
+     8) EQUIPO        → los roles del voluntariado (Quiénes somos)
+     9) PREGUNTAS     → las preguntas de donantes (Transparencia)
+
+   💡 TRUCO: dentro de cualquier texto pueden poner una palabra en
+      negritas escribiéndola entre dos asteriscos dobles, así:
+          "Capacitamos en **disciplina positiva** y crianza..."
+                           └──────────────────┘ saldrá en negritas
 
    Los textos largos (los párrafos de cada página) NO están aquí:
    están dentro de los archivos .html, marcados con un comentario
@@ -60,7 +70,12 @@ const CONTENIDO = {
   },
 
   /* ================================================================
-     2) CIFRAS DE TRAYECTORIA (página de inicio)
+     2) LEMA — la frase entre comillas de la portada de Inicio
+     ================================================================ */
+  lema: "«Nuestra niñez en situación vulnerable nos necesita»",
+
+  /* ================================================================
+     3) CIFRAS DE TRAYECTORIA (página de inicio)
      ----------------------------------------------------------------
      "numero"  → puede llevar + o % (ej: "10+", "100%")
      "texto"   → qué significa ese número
@@ -73,7 +88,117 @@ const CONTENIDO = {
   ],
 
   /* ================================================================
-     3) BOLETINES Y DOCUMENTOS DE TRANSPARENCIA
+     4) LOS 4 PROGRAMAS
+     ----------------------------------------------------------------
+     Cada programa aparece en DOS lugares a la vez:
+       · como tarjeta resumida en la página de Inicio
+       · como sección completa en la página "Qué hacemos"
+     Editar aquí actualiza los dos lugares de golpe.
+
+     "icono" elige el dibujito de la tarjeta. Las opciones son:
+        "corazon"   → corazón con latido (hospital)
+        "escuela"   → birrete (talleres y educación)
+        "familia"   → personas (familias y cuidadores)
+        "donacion"  → árbol que crece (donaciones)
+
+     "detalle" es la sección grande de "Qué hacemos":
+        tituloLargo→ (opcional) título de esa sección, si es distinto
+                     al de la tarjeta del inicio
+        parrafos   → los párrafos de introducción (cada uno entre comillas)
+        introLista → la frase que presenta la lista
+        lista      → los puntos de qué se hace en el programa
+        lugar      → dónde ocurre (sale con el pin 📍 al final)
+        foto       → nombre del archivo de foto en docs/assets/img/
+                     o null si todavía no hay. 🔒 RECUERDEN: nunca
+                     una foto con el rostro de una niña o un niño.
+        fotoAlt    → descripción de la foto para personas ciegas
+                     (obligatoria cuando pongan una foto)
+
+     ⚠️ El programa de "Donaciones dirigidas" tiene detalle: null
+        porque su sección en "Qué hacemos" es especial (explica el
+        diagnóstico situacional) y se edita directo en ese HTML.
+     ================================================================ */
+  programas: [
+    {
+      id: "hospital",
+      icono: "corazon",
+      titulo: "Intervención hospitalaria",
+      resumen: "Acompañamiento psicosocial y apoyo integral a niñas y niños hospitalizados.",
+      lugarCorto: "Hospital Civil Nuevo «Dr. Juan I. Menchaca»",
+      detalle: {
+        parrafos: [
+          "Acompañamos a niñas y niños hospitalizados y a sus familias en el **Hospital Civil Nuevo «Dr. Juan I. Menchaca»**. Un hospital salva la vida; nosotros trabajamos para que ese tiempo no le robe la infancia a quien lo atraviesa.",
+        ],
+        introLista: "Lo que hacemos ahí:",
+        lista: [
+          "Acompañamiento psicosocial a la niña o el niño y a su cuidador principal.",
+          "Juego, lectura y actividades que devuelven momentos de infancia dentro del hospital.",
+          "Apoyo en especie según lo que el área médica y la familia reportan como necesario.",
+          "Presencia sostenida: volvemos, no visitamos una vez.",
+        ],
+        lugar: "Hospital Civil Nuevo «Dr. Juan I. Menchaca» · Guadalajara",
+        foto: null,
+        fotoAlt: "",
+      },
+    },
+    {
+      id: "talleres",
+      icono: "escuela",
+      titulo: "Talleres y educación",
+      resumen: "Derechos humanos, prevención de violencias y sensibilización en escuelas y comunidades.",
+      lugarCorto: "Escuelas y comunidades",
+      detalle: {
+        tituloLargo: "Talleres en escuelas y comunidades",
+        parrafos: [
+          "Llevamos a las aulas y a los espacios comunitarios algo que casi nunca se enseña: que la niñez tiene derechos exigibles, y que la violencia no es normal aunque sea cotidiana.",
+        ],
+        introLista: "Contenidos que impartimos:",
+        lista: [
+          "Derechos humanos de la niñez, explicados en lenguaje que un niño entiende.",
+          "Prevención de violencias: reconocerlas, nombrarlas y a quién acudir.",
+          "Sensibilización con enfoque diferencial: no toda la infancia parte del mismo lugar.",
+          "Herramientas para que el personal docente detecte y canalice casos.",
+        ],
+        lugar: "Escuelas y comunidades del área metropolitana",
+        foto: null,
+        fotoAlt: "",
+      },
+    },
+    {
+      id: "familias",
+      icono: "familia",
+      titulo: "Familias y cuidadores",
+      resumen: "Capacitación en disciplina positiva y crianza sin violencia: el primer círculo de protección.",
+      lugarCorto: "Talleres a madres, padres y tutores",
+      detalle: {
+        tituloLargo: "Capacitación a familias y cuidadores",
+        parrafos: [
+          "El primer círculo de protección de una niña o un niño no es una institución: es su casa. Por eso capacitamos a madres, padres, abuelas y cuidadores en **disciplina positiva** y crianza sin violencia.",
+        ],
+        introLista: "De qué se trata:",
+        lista: [
+          "Poner límites firmes sin gritos, humillaciones ni golpes.",
+          "Entender la conducta infantil por su etapa de desarrollo, no como desafío.",
+          "Reparar el vínculo cuando ya hubo daño: no se trata de culpar, sino de cambiar.",
+          "Cuidar a quien cuida: el agotamiento del cuidador también es un factor de riesgo.",
+        ],
+        lugar: "Talleres a madres, padres, tutores y cuidadores",
+        foto: null,
+        fotoAlt: "",
+      },
+    },
+    {
+      id: "donaciones",
+      icono: "donacion",
+      titulo: "Donaciones dirigidas",
+      resumen: "Cada apoyo se destina según un diagnóstico situacional, no según la urgencia aparente.",
+      lugarCorto: "Con redes de otras asociaciones civiles",
+      detalle: null,   // ← su sección especial se edita en que-hacemos.html
+    },
+  ],
+
+  /* ================================================================
+     5) BOLETINES Y DOCUMENTOS DE TRANSPARENCIA
      ----------------------------------------------------------------
      👉 CÓMO AGREGAR UN BOLETÍN NUEVO (paso a paso en el README):
 
@@ -122,7 +247,7 @@ const CONTENIDO = {
   ],
 
   /* ================================================================
-     4) HISTORIAS DE IMPACTO
+     6) HISTORIAS DE IMPACTO
      ----------------------------------------------------------------
      🔒 REGLA ABSOLUTA DE PROTECCIÓN DE LA INFANCIA:
         · NUNCA escriban el nombre real de una niña o un niño.
@@ -157,7 +282,7 @@ const CONTENIDO = {
   ],
 
   /* ================================================================
-     5) INFOGRAFÍAS — "Derechos en Formato Ciudadano"
+     7) INFOGRAFÍAS — "Derechos en Formato Ciudadano"
      ----------------------------------------------------------------
      Igual que los boletines:
        Paso 1. Guarden la imagen o PDF en  docs/assets/infografias/
@@ -200,6 +325,52 @@ const CONTENIDO = {
       archivo: null,
       alt: "Infografía sobre el derecho de la niñez a ser escuchada en decisiones que le afectan.",
       estado: "proximamente",
+    },
+  ],
+
+  /* ================================================================
+     8) EQUIPO — los roles del voluntariado (página "Quiénes somos")
+     ----------------------------------------------------------------
+     🔒 Por protección de datos NO se publican nombres, fotos ni
+        cargos personales: solo las funciones del voluntariado.
+     ================================================================ */
+  equipo: [
+    {
+      rol: "Coordinación general",
+      descripcion: "Define el rumbo, sostiene los vínculos con hospitales e instituciones y responde por el uso de cada donación.",
+    },
+    {
+      rol: "Voluntariado de acompañamiento",
+      descripcion: "Quienes están en el hospital y en las comunidades: los que ponen el cuerpo, el tiempo y la escucha donde más se necesita.",
+    },
+    {
+      rol: "Talleristas y formación",
+      descripcion: "Personas capacitadas en derechos de la niñez y disciplina positiva que llevan los contenidos a escuelas, familias y cuidadores.",
+    },
+  ],
+
+  /* ================================================================
+     9) PREGUNTAS DE DONANTES (página "Transparencia")
+     ----------------------------------------------------------------
+     Para agregar una pregunta nueva: copien un bloque { ... },
+     completo, péguenlo antes del cierre  ],  y cambien los textos.
+     ================================================================ */
+  preguntas: [
+    {
+      pregunta: "¿Puedo dirigir mi donación a un programa específico?",
+      respuesta: "Sí. Puedes indicar si quieres que se destine a intervención hospitalaria, talleres, capacitación a familias o al fondo general. Si no lo indicas, entra al fondo que el diagnóstico priorice ese trimestre.",
+    },
+    {
+      pregunta: "¿Emiten recibo deducible de impuestos?",
+      respuesta: "Escríbenos antes de donar para confirmarte la situación fiscal vigente de la asociación y qué comprobante podemos emitirte. Preferimos decírtelo con claridad desde el principio.",
+    },
+    {
+      pregunta: "¿Puedo donar en especie?",
+      respuesta: "Sí, y es muy útil —siempre que corresponda a una necesidad diagnosticada. Antes de traer algo, escríbenos: te decimos qué se necesita en este momento para que tu apoyo no termine almacenado.",
+    },
+    {
+      pregunta: "¿Cómo sé que mi donación llegó?",
+      respuesta: "Por el boletín del trimestre, donde se reportan las acciones y los recursos usados. Si tu donación fue dirigida a un caso concreto, te informamos directamente su resultado.",
     },
   ],
 };

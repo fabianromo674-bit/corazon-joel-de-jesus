@@ -51,6 +51,33 @@
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
+  /* ----------------------------------------------------------------
+     Negritas seguras: en contenido.js se puede escribir
+        "texto con **algo importante** adentro"
+     y aquí se convierte en negritas de verdad. Primero se
+     neutraliza cualquier símbolo de HTML para que un texto mal
+     pegado nunca pueda romper (ni inyectar nada en) la página.
+     ---------------------------------------------------------------- */
+  function conNegritas(texto) {
+    var seguro = String(texto)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return seguro.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  }
+
+  /* ----------------------------------------------------------------
+     Iconos de los programas. La asociación elige uno por nombre
+     en contenido.js ("corazon", "escuela", "familia", "donacion");
+     los dibujos viven aquí para que nadie tenga que editar SVG.
+     ---------------------------------------------------------------- */
+  var ICONOS = {
+    corazon: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.4-7 10-7 10Z" stroke="#0c2246" stroke-width="1.8"/><path d="M8 11h2l1.2-2.5L13 13l1-2h2" stroke="#f16047" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    escuela: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5Z" stroke="#0c2246" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" stroke="#0c2246" stroke-width="1.8"/><path d="M21 9v6" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    familia: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3" stroke="#0c2246" stroke-width="1.8"/><circle cx="17" cy="10" r="2.4" stroke="#0c2246" stroke-width="1.8"/><path d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M14.5 15.2c2.3.2 4.3 1.4 4.9 3.8" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    donacion: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v10M12 13c0 3-2 4-4.5 4M12 13c0 3 2 4 4.5 4" stroke="#0c2246" stroke-width="1.8" stroke-linecap="round"/><path d="M5 21h14M8 6l4-3 4 3" stroke="#f16047" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  };
+
   /* ================================================================
      1) CONTACTO — se inyecta en el pie de todas las páginas
      ================================================================ */
@@ -132,6 +159,197 @@
       else el.textContent = texto;
     }
     requestAnimationFrame(paso);
+  }
+
+  /* ================================================================
+     2-bis) LEMA de la portada
+     ================================================================ */
+  function pintarLema() {
+    $$("[data-lema]").forEach(function (el) {
+      if (datos.lema) el.textContent = datos.lema;
+    });
+  }
+
+  /* ================================================================
+     2-ter) PROGRAMAS — tarjetas resumidas de la página de Inicio
+     ================================================================ */
+  function pintarProgramas() {
+    var cont = $("[data-programas]");
+    if (!cont || !datos.programas) return;
+
+    datos.programas.forEach(function (p) {
+      var art = crear("article", "tarjeta");
+
+      var ic = crear("div", "icono");
+      ic.setAttribute("aria-hidden", "true");
+      ic.innerHTML = ICONOS[p.icono] || ICONOS.corazon;
+      art.appendChild(ic);
+
+      var h = crear("h3");
+      h.textContent = p.titulo;
+      art.appendChild(h);
+
+      var res = crear("p");
+      res.innerHTML = conNegritas(p.resumen);
+      art.appendChild(res);
+
+      var lugar = crear("span", "lugar");
+      lugar.textContent = p.lugarCorto;
+      art.appendChild(lugar);
+
+      cont.appendChild(art);
+    });
+  }
+
+  /* ================================================================
+     2-quater) PROGRAMAS — secciones completas de "Qué hacemos"
+     ----------------------------------------------------------------
+     Genera una sección grande por cada programa que tenga "detalle"
+     en contenido.js, alternando el lado de la foto, y pone la línea
+     de kintsugi entre una y otra. El programa de donaciones tiene
+     su propia sección especial escrita en el HTML.
+     ================================================================ */
+  var NOTAS_FOTO = {
+    hospital: "Manos, materiales o espacios del programa.",
+    talleres: "Un aula, materiales del taller o una dinámica de espaldas.",
+    familias: "Un taller con personas adultas, o materiales de trabajo.",
+  };
+  var FONDOS_SECCION = ["#ffffff", "#fbf8f6"];   // blanco / crema alternados
+
+  function pintarProgramasDetalle() {
+    var cont = $("[data-programas-detalle]");
+    if (!cont || !datos.programas) return;
+
+    var conDetalle = datos.programas.filter(function (p) { return p.detalle; });
+
+    conDetalle.forEach(function (p, i) {
+      var d = p.detalle;
+      var n = i + 1;
+
+      var sec = crear("section", "seccion" + (i % 2 === 1 ? " crema" : ""));
+      sec.id = p.id;
+      sec.setAttribute("aria-labelledby", "titulo-p" + n);
+
+      var env = crear("div", "envoltura");
+      var rej = crear("div", "rejilla rejilla-2");
+      rej.style.alignItems = "center";
+
+      /* --- Columna de texto --- */
+      var col = crear("div");
+
+      var ante = crear("p", "antetitulo");
+      ante.textContent = "Programa 0" + n;
+      col.appendChild(ante);
+
+      var h2 = crear("h2");
+      h2.id = "titulo-p" + n;
+      h2.style.cssText = "font-size:clamp(28px,3.4vw,38px);margin:12px 0 16px";
+      // Si el programa tiene un título largo para su sección, se usa;
+      // si no, se repite el de la tarjeta.
+      h2.textContent = d.tituloLargo || p.titulo;
+      col.appendChild(h2);
+
+      (d.parrafos || []).forEach(function (t) {
+        var par = crear("p");
+        par.style.marginBottom = "16px";
+        par.innerHTML = conNegritas(t);
+        col.appendChild(par);
+      });
+
+      if (d.introLista) {
+        var intro = crear("p");
+        intro.style.marginBottom = "20px";
+        intro.textContent = d.introLista;
+        col.appendChild(intro);
+      }
+
+      if (d.lista && d.lista.length) {
+        var ul = crear("ul");
+        ul.style.cssText = "margin:0 0 22px 20px;color:var(--gris)";
+        d.lista.forEach(function (t) {
+          var li = crear("li");
+          li.innerHTML = conNegritas(t);
+          ul.appendChild(li);
+        });
+        col.appendChild(ul);
+      }
+
+      var lugar = crear("span", "lugar");
+      lugar.textContent = d.lugar;
+      col.appendChild(lugar);
+
+      /* --- Columna de foto (o espacio reservado) --- */
+      var colFoto;
+      if (d.foto) {
+        colFoto = crear("div");
+        var img = crear("img");
+        img.src = "assets/img/" + d.foto;
+        img.alt = d.fotoAlt || "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.style.cssText = "width:100%;height:auto;border-radius:16px";
+        colFoto.appendChild(img);
+      } else {
+        colFoto = crear("div", "foto-pendiente");
+        var pf = crear("p");
+        pf.innerHTML = "<b>Espacio para fotografía</b>" +
+          conNegritas(NOTAS_FOTO[p.id] || "Manos, materiales o espacios del programa.") +
+          "<br>Nunca rostros de menores de edad.";
+        colFoto.appendChild(pf);
+      }
+
+      /* Alternar el lado de la foto: impar texto-foto, par foto-texto */
+      if (i % 2 === 0) { rej.appendChild(col); rej.appendChild(colFoto); }
+      else { rej.appendChild(colFoto); rej.appendChild(col); }
+
+      env.appendChild(rej);
+      sec.appendChild(env);
+      cont.appendChild(sec);
+
+      /* Línea de kintsugi hacia la siguiente sección */
+      if (i < conDetalle.length - 1) {
+        var seam = crear("div", "kintsugi");
+        seam.setAttribute("data-kintsugi", "");
+        seam.setAttribute("data-fondo", FONDOS_SECCION[(i + 1) % 2]);
+        cont.appendChild(seam);
+      }
+    });
+  }
+
+  /* ================================================================
+     2-quinquies) EQUIPO (Quiénes somos) y PREGUNTAS (Transparencia)
+     ================================================================ */
+  function pintarEquipo() {
+    var cont = $("[data-equipo]");
+    if (!cont || !datos.equipo) return;
+
+    datos.equipo.forEach(function (m) {
+      var art = crear("article", "tarjeta");
+      var h = crear("h3");
+      h.textContent = m.rol;
+      art.appendChild(h);
+      var p = crear("p");
+      p.innerHTML = conNegritas(m.descripcion);
+      art.appendChild(p);
+      cont.appendChild(art);
+    });
+  }
+
+  function pintarPreguntas() {
+    var cont = $("[data-preguntas]");
+    if (!cont || !datos.preguntas) return;
+
+    datos.preguntas.forEach(function (q) {
+      var art = crear("article", "tarjeta");
+      art.style.background = "var(--blanco)";
+      var h = crear("h3");
+      h.textContent = q.pregunta;
+      art.appendChild(h);
+      var p = crear("p");
+      p.innerHTML = conNegritas(q.respuesta);
+      art.appendChild(p);
+      cont.appendChild(art);
+    });
   }
 
   /* ================================================================
@@ -503,7 +721,12 @@
   document.addEventListener("DOMContentLoaded", function () {
     try {
       pintarContacto();
+      pintarLema();
       pintarCifras();
+      pintarProgramas();
+      pintarProgramasDetalle();   // antes de pintarKintsugi: genera costuras
+      pintarEquipo();
+      pintarPreguntas();
       pintarBoletines();
       pintarHistorias();
       pintarInfografias();
