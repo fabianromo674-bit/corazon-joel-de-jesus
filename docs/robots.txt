@@ -1,0 +1,7 @@
+# Sitio del Voluntariado El Corazón de Joel de Jesús
+# Queremos que los buscadores encuentren todo el sitio.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://corazondejoeldejesus.github.io/sitemap.xml
