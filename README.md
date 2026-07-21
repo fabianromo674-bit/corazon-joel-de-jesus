@@ -12,12 +12,18 @@ no se entiende, es culpa de la guía, no suya: avísennos y lo simplificamos.
 
 | Quiero… | Voy a… |
 |---|---|
-| Cambiar un texto de una página | Abrir el archivo `.html` de esa página y buscar `✏️ EDITABLE` |
 | Cambiar el correo o el teléfono | Editar **solo** `docs/assets/js/contenido.js` |
+| Editar un programa (textos, lista, foto) | Editar `contenido.js` → sección `programas` |
 | Subir un boletín nuevo | Poner el PDF en `docs/assets/boletines/` y editar `contenido.js` |
 | Agregar una historia o infografía | Editar `contenido.js` |
+| Cambiar el lema, las cifras, el equipo o las preguntas de donantes | Editar `contenido.js` |
+| Cambiar un párrafo largo de una página | Abrir el `.html` de esa página y buscar `✏️ EDITABLE` |
 | Cambiar una foto | Poner la imagen en `docs/assets/img/` |
 | Publicar los cambios en internet | Subir los archivos a GitHub (ver más abajo) |
+
+> 💡 **Truco de negritas:** en cualquier texto de `contenido.js` pueden
+> escribir `**palabras importantes**` entre dobles asteriscos y saldrán
+> en negritas en la página.
 
 > **Regla de oro:** nunca borren archivos. Si algo sale mal, siempre se puede
 > deshacer con `Ctrl + Z` antes de guardar.
