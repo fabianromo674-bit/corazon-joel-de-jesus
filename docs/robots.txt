@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://corazondejoeldejesus.github.io/sitemap.xml
+Sitemap: https://fabianromo674-bit.github.io/corazon-joel-de-jesus/sitemap.xml
