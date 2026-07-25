@@ -73,11 +73,20 @@ navegación y en el ícono de la pestaña.
 - El equipo de voluntariado **adulto**, con su permiso por escrito
 - Detalles: una mochila, un cuaderno, una silla
 
-### Dónde hacen falta (hay 3 espacios marcados en el sitio)
+### Dónde hacen falta
 
-- [ ] 🔴 `que-hacemos.html` → Programa 01, Intervención hospitalaria
-- [ ] 🔴 `que-hacemos.html` → Programa 02, Talleres en escuelas
-- [ ] 🔴 `que-hacemos.html` → Programa 03, Familias y cuidadores
+- [x] ✅ Programa 01, Intervención hospitalaria — publicada (con edición de
+      protección: la identidad del paciente se pixeló)
+- [ ] 🔴 Programa 02, Talleres en escuelas — las fotos de talleres recibidas
+      muestran rostros de menores y NO se pueden publicar; falta una toma
+      del aula, de los materiales o del grupo de espaldas
+- [ ] 🔴 Programa 03, Familias y cuidadores — mismo caso: la foto grupal
+      recibida muestra rostros posiblemente de menores de edad
+
+> 📸 **Sobre las fotos que enviaron (julio 2026):** de 17 fotos recibidas se
+> publicaron 11 (2 con edición de protección). Se excluyeron 6 por mostrar
+> rostros identificables de menores o contextos sensibles. No es un capricho:
+> es la regla que el propio sitio promete en su pie de página.
 
 ### Requisitos técnicos
 
@@ -94,10 +103,12 @@ Hoy las tres tarjetas dicen **«Próximamente»**. Es honesto, pero para un dona
 la página de Transparencia es **la más importante del sitio**: es donde decide
 si confía o no.
 
-- [ ] 🔴 Boletín del trimestre en curso (PDF)
+- [x] ✅ Boletín n.º 1 publicado como **borrador** (julio 2026)
+- [ ] 🔴 Validar las cifras del boletín n.º 1 (número de kits, despensas y
+      raciones) y quitar el aviso de borrador
+- [x] ✅ Dictamen jurídico de derechos de la niñez oncológica, descargable
 - [ ] 🔴 Memoria de actividades 2025 (PDF)
 - [ ] 🟡 Documento que explique el proceso de diagnóstico situacional
-- [ ] 🟡 Boletines de trimestres anteriores, si existen
 
 > 📄 **Cómo subirlos:** está explicado paso a paso en el `README.md`,
 > sección **«3. Cómo subir un boletín nuevo»**.
@@ -133,9 +144,10 @@ ejemplo del formato). El sitio lo dice claramente debajo de cada una:
 
 Los 4 espacios de la galería están listos y dicen «Próximamente».
 
-- [ ] 🟡 Diseñar/entregar las 4 infografías (formato vertical, 3:4)
-- [ ] 🟡 Revisión legal: que la traducción a lenguaje ciudadano sea exacta
-- [ ] 🟡 Descripción en una frase de cada una (para personas ciegas)
+- [x] ✅ Infografías 1, 4 y 5 publicadas con filtros por tema
+- [ ] 🟡 Diseñar las piezas 2 (información adaptada) y 3 (acompañamiento
+      familiar) para completar la serie de 5 ejes
+- [ ] 🟡 Revisión legal final de las piezas contra el dictamen
 - [ ] 🟢 Definir si llevan licencia de uso (ej. Creative Commons)
 
 ---
