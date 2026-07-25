@@ -17,6 +17,7 @@
      7) INFOGRAFÍAS   → la galería de "Derechos en Formato Ciudadano"
      8) EQUIPO        → los roles del voluntariado (Quiénes somos)
      9) PREGUNTAS     → las preguntas de donantes (Transparencia)
+    10) GALERÍA       → las fotos de "El trabajo en imágenes" (Inicio)
 
    💡 TRUCO: dentro de cualquier texto pueden poner una palabra en
       negritas escribiéndola entre dos asteriscos dobles, así:
@@ -137,8 +138,8 @@ const CONTENIDO = {
           "Presencia sostenida: volvemos, no visitamos una vez.",
         ],
         lugar: "Hospital Civil Nuevo «Dr. Juan I. Menchaca» · Guadalajara",
-        foto: null,
-        fotoAlt: "",
+        foto: "fotos/hospital-voluntario.jpg",
+        fotoAlt: "Voluntario con la playera del Corazón de Joel de Jesús acompaña junto a una cuna en la sala pediátrica. La imagen protege la identidad del paciente.",
       },
     },
     {
@@ -221,12 +222,20 @@ const CONTENIDO = {
      ================================================================ */
   boletines: [
     {
-      etiqueta: "Boletín · 2º trimestre 2026",
-      titulo: "Acciones y resultados del trimestre",
-      resumen: "Talleres impartidos, intervenciones hospitalarias y donaciones entregadas, con evidencia de cada apoyo.",
-      archivo: null,              // ej: "boletin-2026-2T.pdf"
-      peso: "",                   // ej: "PDF · 1.2 MB"
-      estado: "proximamente",
+      etiqueta: "Boletín n.º 1 · Julio 2026",
+      titulo: "Boletín de transparencia n.º 1 (borrador)",
+      resumen: "Entregas en el Hospital Civil, apoyo a comedores comunitarios y donación de insumos de higiene, con evidencia fotográfica. En revisión por la mesa directiva.",
+      archivo: "boletin-01-julio-2026.html",
+      peso: "Se lee en línea · Se puede imprimir",
+      estado: "publicado",
+    },
+    {
+      etiqueta: "Documento jurídico",
+      titulo: "Dictamen: derechos de la niñez con cáncer",
+      resumen: "Fundamento legal de nuestra intervención hospitalaria: los 5 ejes de derechos exigibles de las niñas y niños con diagnóstico oncológico.",
+      archivo: "dictamen-derechos-ninez-oncologia.docx",
+      peso: "Word · 334 KB",
+      estado: "publicado",
     },
     {
       etiqueta: "Reporte anual",
@@ -293,38 +302,49 @@ const CONTENIDO = {
      "alt" = descripción de la imagen para personas ciegas.
              Es OBLIGATORIA. Describan lo que se ve, en una frase.
      ================================================================ */
+  /* Esta primera serie traduce los 5 ejes del dictamen jurídico
+     sobre los derechos de la niñez con cáncer en el hospital.
+     El "tema" alimenta los botones de filtro de la galería. */
   infografias: [
     {
-      tema: "Derecho a la salud",
-      titulo: "¿Qué puedo exigir en un hospital público?",
-      resumen: "Lo que dice la ley sobre la atención a niñas y niños, explicado en palabras de todos los días.",
+      tema: "Salud oportuna",
+      titulo: "1 · Salud mental y tratamiento oportuno",
+      resumen: "Diagnóstico temprano, acceso sin discriminación, medicamentos completos y espacios seguros: lo que la ley garantiza a la niñez con cáncer.",
+      archivo: "infografia-1-salud-integral.jpg",
+      alt: "Infografía: derecho de niñas y niños con cáncer a diagnóstico y tratamiento oportuno, acceso sin discriminación, medicamentos y espacios seguros de atención.",
+      estado: "publicado",
+    },
+    {
+      tema: "Información",
+      titulo: "2 · Derecho a entender lo que me pasa",
+      resumen: "Las niñas y niños tienen derecho a que su diagnóstico y tratamiento se les explique en palabras que puedan comprender.",
       archivo: null,
-      alt: "Infografía sobre el derecho a la salud de niñas y niños en hospitales públicos.",
+      alt: "Infografía sobre el derecho a la información adaptada para pacientes infantiles.",
       estado: "proximamente",
     },
     {
-      tema: "Derecho a la educación",
-      titulo: "Nadie puede negarle la escuela a un niño",
-      resumen: "Requisitos, mitos y qué hacer si una escuela rechaza una inscripción.",
+      tema: "Acompañamiento",
+      titulo: "3 · Mi familia se queda conmigo",
+      resumen: "El acompañamiento familiar durante la hospitalización no es una cortesía: es un derecho que no puede restringirse sin justificación.",
       archivo: null,
-      alt: "Infografía sobre el derecho a la educación y la inscripción escolar.",
+      alt: "Infografía sobre el derecho al acompañamiento familiar permanente en el hospital.",
       estado: "proximamente",
     },
     {
-      tema: "Vida libre de violencia",
-      titulo: "Disciplina positiva, no castigo",
-      resumen: "Cómo poner límites sin gritos ni golpes, con ejemplos de la vida diaria.",
-      archivo: null,
-      alt: "Infografía sobre crianza sin violencia y disciplina positiva.",
-      estado: "proximamente",
+      tema: "Juego y educación",
+      titulo: "4 · Mi infancia no se detiene",
+      resumen: "Estar en un hospital no significa dejar de ser niña o niño: el aprendizaje, el juego y el apoyo emocional continúan.",
+      archivo: "infografia-4-mi-infancia-no-se-detiene.jpg",
+      alt: "Infografía: en el hospital el aprendizaje continúa, el juego es esencial y se mantiene el contacto con la escuela, amigos y familia.",
+      estado: "publicado",
     },
     {
-      tema: "Derecho a ser escuchado",
-      titulo: "La voz de un niño cuenta legalmente",
-      resumen: "Qué significa el interés superior de la niñez cuando se toman decisiones sobre su vida.",
-      archivo: null,
-      alt: "Infografía sobre el derecho de la niñez a ser escuchada en decisiones que le afectan.",
-      estado: "proximamente",
+      tema: "Trato digno",
+      titulo: "5 · Trato digno y alivio del dolor",
+      resumen: "Atención compasiva, apoyo psicológico para el paciente y su familia, y acceso a cuidados paliativos en todo momento.",
+      archivo: "infografia-5-trato-digno.jpg",
+      alt: "Infografía: derecho a atención humana que evite el sufrimiento innecesario, con manejo del dolor y cuidados paliativos.",
+      estado: "publicado",
     },
   ],
 
@@ -371,6 +391,54 @@ const CONTENIDO = {
     {
       pregunta: "¿Cómo sé que mi donación llegó?",
       respuesta: "Por el boletín del trimestre, donde se reportan las acciones y los recursos usados. Si tu donación fue dirigida a un caso concreto, te informamos directamente su resultado.",
+    },
+  ],
+
+  /* ================================================================
+     10) GALERÍA DE FOTOS — "El trabajo en imágenes" (Inicio)
+     ----------------------------------------------------------------
+     🔒 REGLA ABSOLUTA antes de agregar una foto aquí:
+        NUNCA una imagen donde se reconozca el rostro de una niña,
+        niño o adolescente. Sí se puede: de espaldas, manos,
+        materiales, espacios, personas adultas con su permiso.
+
+     Para agregar una foto:
+       Paso 1. Guardarla en  docs/assets/img/fotos/
+               (nombre sin espacios ni acentos)
+       Paso 2. Copiar un bloque { ... } y cambiar sus datos.
+     "titulo" = la leyenda que se ve sobre la foto.
+     "alt"    = descripción para personas ciegas (obligatoria).
+     ================================================================ */
+  galeriaFotos: [
+    {
+      archivo: "fotos/donaciones-oncologia.jpg",
+      titulo: "Entrega de donaciones en oncología pediátrica",
+      alt: "Voluntario con cubrebocas entrega bolsas de donaciones junto a un carrito; dos pacientes pediátricos observan de espaldas.",
+    },
+    {
+      archivo: "fotos/entrega-hospital.jpg",
+      titulo: "Alimentos para familias en el hospital",
+      alt: "Voluntarios entregan charolas de comida a cuidadores en un pasillo del área de terapia intermedia.",
+    },
+    {
+      archivo: "fotos/entrega-despensa.jpg",
+      titulo: "Despensas donde hacen falta",
+      alt: "Voluntaria entrega una bolsa de despensa; un niño la recibe de espaldas a la cámara.",
+    },
+    {
+      archivo: "fotos/kits-dentales.jpg",
+      titulo: "Kits de higiene dental donados",
+      alt: "Decenas de pastas y cepillos dentales nuevos listos para entregarse.",
+    },
+    {
+      archivo: "fotos/reparto-pastel.jpg",
+      titulo: "Convivencias que también alimentan",
+      alt: "Mesa llena de rebanadas de pastel servidas en platos para repartir en una actividad comunitaria.",
+    },
+    {
+      archivo: "fotos/comedor-comunitario.jpg",
+      titulo: "Apoyo en comedores comunitarios",
+      alt: "Voluntaria con cubrebocas sirve rebanadas de pastel a personas adultas mayores en un comedor.",
     },
   ],
 };

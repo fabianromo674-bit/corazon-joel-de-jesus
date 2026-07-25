@@ -378,13 +378,18 @@
       if (publicado) {
         var a = crear("a", "enlace");
         a.href = "assets/boletines/" + b.archivo;
-        a.setAttribute("download", "");
-        // El texto dice qué documento es: un lector de pantalla que
-        // salta de enlace en enlace no oye tres veces "Descargar".
+        // Un boletín en HTML se ABRE en el navegador; cualquier otro
+        // formato (PDF, Word) se descarga. El texto dice qué documento
+        // es: un lector de pantalla que salta de enlace en enlace no
+        // debe oír tres veces "Descargar".
+        var esPagina = /\.html?$/i.test(b.archivo);
+        if (!esPagina) a.setAttribute("download", "");
         a.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-          '<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-          '<span></span>';
-        $("span", a).textContent = "Descargar " + b.titulo;
+          (esPagina
+            ? '<path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+            : '<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>') +
+          '</svg><span></span>';
+        $("span", a).textContent = (esPagina ? "Leer " : "Descargar ") + b.titulo;
         art.appendChild(a);
         if (b.peso) {
           var peso = crear("p", "peso");
@@ -434,8 +439,51 @@
   }
 
   /* ================================================================
-     5) INFOGRAFÍAS
+     5) INFOGRAFÍAS — con filtros por tema
+     ----------------------------------------------------------------
+     Los botones de filtro se generan solos a partir de los "tema"
+     que existan en contenido.js. Al filtrar, se anuncia cuántas
+     piezas se muestran (aria-live) para lectores de pantalla.
      ================================================================ */
+  function pintarFiltrosInfografias() {
+    var zona = $("[data-filtros-infografias]");
+    var cont = $("[data-infografias]");
+    if (!zona || !cont || !datos.infografias) return;
+
+    // Temas únicos, en el orden en que aparecen
+    var temas = [];
+    datos.infografias.forEach(function (g) {
+      if (g.tema && temas.indexOf(g.tema) === -1) temas.push(g.tema);
+    });
+    if (temas.length < 2) return;   // con un solo tema no hay qué filtrar
+
+    var etiquetas = ["Todas"].concat(temas);
+    var aviso = crear("p", "solo-lectores");
+    aviso.setAttribute("aria-live", "polite");
+
+    etiquetas.forEach(function (t, i) {
+      var b = crear("button", "filtro");
+      b.type = "button";
+      b.textContent = t;
+      b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      b.addEventListener("click", function () {
+        $$(".filtro", zona).forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        var visibles = 0;
+        $$(".infografia", cont).forEach(function (card) {
+          var mostrar = t === "Todas" || card.getAttribute("data-tema") === t;
+          card.hidden = !mostrar;
+          if (mostrar) visibles++;
+        });
+        aviso.textContent = "Mostrando " + visibles +
+          (visibles === 1 ? " pieza" : " piezas") +
+          (t === "Todas" ? "." : " del tema " + t + ".");
+      });
+      zona.appendChild(b);
+    });
+    zona.appendChild(aviso);
+  }
+
   function pintarInfografias() {
     var cont = $("[data-infografias]");
     if (!cont || !datos.infografias) return;
@@ -443,6 +491,7 @@
     datos.infografias.forEach(function (g) {
       var publicada = g.estado === "publicado" && g.archivo;
       var art = crear("article", "infografia" + (publicada ? "" : " pendiente"));
+      art.setAttribute("data-tema", g.tema || "");
 
       var lienzo = crear("div", "lienzo");
       if (publicada) {
@@ -487,6 +536,34 @@
       }
       art.appendChild(info);
       cont.appendChild(art);
+    });
+  }
+
+  /* ================================================================
+     5-bis) GALERÍA DE FOTOS — "El trabajo en imágenes" (Inicio)
+     ----------------------------------------------------------------
+     Mosaico de fotos con su leyenda. Las fotos y sus textos se
+     editan en contenido.js → galeriaFotos.
+     ================================================================ */
+  function pintarGaleriaFotos() {
+    var cont = $("[data-galeria-fotos]");
+    if (!cont || !datos.galeriaFotos) return;
+
+    datos.galeriaFotos.forEach(function (f) {
+      var fig = crear("figure", "foto-mosaico");
+
+      var img = crear("img");
+      img.src = "assets/img/" + f.archivo;
+      img.alt = f.alt || f.titulo;
+      img.loading = "lazy";
+      img.decoding = "async";
+      fig.appendChild(img);
+
+      var cap = crear("figcaption");
+      cap.textContent = f.titulo;
+      fig.appendChild(cap);
+
+      cont.appendChild(fig);
     });
   }
 
@@ -730,6 +807,8 @@
       pintarBoletines();
       pintarHistorias();
       pintarInfografias();
+      pintarFiltrosInfografias();
+      pintarGaleriaFotos();
       menuMovil();
       pintarKintsugi();
       dimensionesRestitucion();
