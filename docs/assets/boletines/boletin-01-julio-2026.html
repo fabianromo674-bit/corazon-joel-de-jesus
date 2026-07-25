@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boletín de transparencia n.º 1 · Julio 2026 — El Corazón de Joel de Jesús</title>
+<meta name="description" content="Primer boletín de transparencia del Voluntariado El Corazón de Joel de Jesús: acciones en el Hospital Civil, comedores comunitarios y donaciones de insumos.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Boletín autocontenido: no depende del CSS del sitio para poder
+     imprimirse o compartirse por separado. Colores del manual. */
+  :root {
+    --navy:#0c2246; --coral:#f16047; --oro:#dfc056; --menta:#72dec6;
+    --hielo:#f4eeee; --gris:#5a6b7c; --tinta:#22303e;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Jost', system-ui, sans-serif;  /* oficial: Codec Pro (de pago) */
+    color:var(--tinta); background:var(--hielo); font-size:17px; line-height:1.6;
+  }
+  h1,h2,h3 { font-family:'Arapey', Georgia, serif; color:var(--navy); line-height:1.2; }
+  .hoja { max-width:820px; margin:0 auto; background:#fff; box-shadow:0 8px 40px rgba(12,34,70,.12); }
+
+  /* Aviso de borrador */
+  .borrador {
+    background:#fff7e0; border-bottom:2px solid var(--oro); padding:12px 34px;
+    font-size:14.5px; color:#6b5510;
+  }
+
+  .portada { background:var(--navy); color:#fff; padding:44px 34px 36px; position:relative; overflow:hidden; }
+  .portada .logo { background:#fff; border-radius:12px; display:inline-block; padding:10px 16px; margin-bottom:22px; }
+  .portada .logo img { width:170px; height:auto; display:block; }
+  .portada .etiqueta {
+    font-size:12.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--menta); margin-bottom:8px;
+  }
+  .portada h1 { color:#fff; font-size:clamp(28px,5vw,40px); max-width:16ch; }
+  .portada p.periodo { color:#dcE8f5; margin-top:10px; font-size:15.5px; }
+
+  .grieta { height:26px; display:block; width:100%; }
+
+  section { padding:30px 34px; }
+  section + section { border-top:1px solid #e8e2da; }
+  .eyebrow {
+    font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--coral); margin-bottom:6px;
+  }
+  h2 { font-size:26px; margin-bottom:12px; }
+  p + p { margin-top:10px; }
+
+  .fotos { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:18px; }
+  .fotos figure { margin:0; }
+  .fotos img { width:100%; height:210px; object-fit:cover; border-radius:10px; display:block; }
+  .fotos figcaption { font-size:13px; color:var(--gris); padding-top:6px; }
+
+  ul { margin:10px 0 0 22px; }
+  li { margin-bottom:8px; }
+
+  .ejes { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:16px; }
+  .eje { background:var(--hielo); border-left:3px solid var(--oro); border-radius:8px; padding:14px 16px; font-size:15px; }
+  .eje b { display:block; color:var(--navy); margin-bottom:4px; }
+
+  .nota { background:#eef6fb; border-left:3px solid #2475b2; border-radius:8px; padding:14px 18px; font-size:15px; margin-top:18px; }
+
+  .pie { background:var(--navy); color:#dce8f5; padding:26px 34px; font-size:14.5px; }
+  .pie a { color:var(--menta); }
+
+  .imprimir { text-align:center; padding:18px; }
+  .imprimir button {
+    font:inherit; font-weight:700; color:var(--navy); background:var(--oro);
+    border:none; border-radius:999px; padding:12px 28px; cursor:pointer;
+  }
+
+  @media print {
+    body { background:#fff; font-size:12.5pt; }
+    .hoja { box-shadow:none; max-width:none; }
+    .imprimir { display:none; }
+    .fotos img { height:150px; }
+    a { color:inherit; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hoja">
+
+  <!-- ⚠️ Quitar este aviso cuando la mesa directiva apruebe el boletín -->
+  <div class="borrador">
+    📝 <strong>BORRADOR PARA REVISIÓN.</strong> Las cantidades y fechas exactas están
+    pendientes de validación por la mesa directiva. No difundir hasta su aprobación.
+  </div>
+
+  <header class="portada">
+    <div class="logo">
+      <img src="../img/logo_completo.png" alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables.">
+    </div>
+    <p class="etiqueta">Boletín de transparencia · N.º 1</p>
+    <h1>Lo que hicimos con tu confianza</h1>
+    <p class="periodo">Periodo reportado: mayo – julio de 2026 · Guadalajara, Jalisco</p>
+  </header>
+  <svg class="grieta" viewBox="0 0 820 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 16 L120 12 L260 19 L420 8 L560 17 L700 10 L820 15" stroke="#dfc056" stroke-width="2" fill="none"/></svg>
+
+  <section>
+    <p class="eyebrow">Para empezar</p>
+    <h2>Por qué existe este boletín</h2>
+    <p>
+      Quien nos da dinero, insumos o tiempo tiene derecho a saber exactamente qué hicimos
+      con ello. Este es el primer número de un ejercicio que repetiremos cada trimestre:
+      contar, con evidencia, en qué se convirtió cada apoyo. Sin adornos y sin exageraciones.
+    </p>
+    <p>
+      Todas las fotografías de este boletín protegen la identidad de las niñas y los niños:
+      verás manos, espaldas y donaciones, nunca el rostro de un menor de edad.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Acción 1</p>
+    <h2>Acompañamiento y entregas en el Hospital Civil</h2>
+    <p>
+      Continuamos la presencia del voluntariado en el <strong>Hospital Civil Nuevo
+      «Dr. Juan I. Menchaca»</strong>, con visitas de acompañamiento en el área pediátrica
+      y entrega de alimentos e insumos a las familias que pasan estancias largas junto a
+      sus hijas e hijos, incluyendo el área de oncología.
+    </p>
+    <div class="fotos">
+      <figure>
+        <img src="../img/fotos/donaciones-oncologia.jpg" alt="Voluntario entrega bolsas de donaciones junto a un carrito; dos pacientes pediátricos observan de espaldas.">
+        <figcaption>Entrega de donaciones en oncología pediátrica.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/entrega-hospital.jpg" alt="Voluntarios entregan charolas de comida a cuidadores en un pasillo de terapia intermedia.">
+        <figcaption>Alimentos para cuidadores en terapia intermedia.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/hospital-voluntario.jpg" alt="Voluntario con la playera de la asociación acompaña junto a una cuna; la imagen protege la identidad del paciente.">
+        <figcaption>Acompañamiento en sala pediátrica (identidad protegida).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Acción 2</p>
+    <h2>Alimento en comedores y comunidades</h2>
+    <p>
+      Apoyamos comedores comunitarios que atienden a familias y personas adultas mayores,
+      con entrega y servicio de alimentos. La convivencia también es parte del apoyo:
+      sentarse a la mesa con dignidad importa tanto como el plato.
+    </p>
+    <div class="fotos">
+      <figure>
+        <img src="../img/fotos/comedor-comunitario.jpg" alt="Voluntaria sirve rebanadas de pastel a personas adultas mayores en un comedor.">
+        <figcaption>Servicio en comedor comunitario.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/entrega-comedor.jpg" alt="Entrega de pastel y galletas a la encargada de un comedor.">
+        <figcaption>Entrega de alimentos a comedor.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/nino-pastel.jpg" alt="Niño de espaldas come una rebanada de pastel en una mesa.">
+        <figcaption>El destino final de cada donación.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Acción 3</p>
+    <h2>Donaciones en especie recibidas y entregadas</h2>
+    <p>Durante el periodo recibimos y canalizamos, entre otros apoyos:</p>
+    <ul>
+      <li>Kits de higiene dental (pastas y cepillos nuevos).</li>
+      <li>Artículos de aseo personal para estancias hospitalarias largas.</li>
+      <li>Jugos individuales y despensas para familias del hospital.</li>
+    </ul>
+    <div class="fotos">
+      <figure>
+        <img src="../img/fotos/kits-dentales.jpg" alt="Decenas de pastas y cepillos dentales nuevos.">
+        <figcaption>Kits de higiene dental.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/articulos-higiene.jpg" alt="Jabones y champús reunidos para su entrega.">
+        <figcaption>Artículos de aseo personal.</figcaption>
+      </figure>
+      <figure>
+        <img src="../img/fotos/entrega-despensa.jpg" alt="Voluntaria entrega una bolsa de despensa; un niño la recibe de espaldas.">
+        <figcaption>Entrega directa, sin intermediarios.</figcaption>
+      </figure>
+    </div>
+    <p class="nota">
+      <strong>Pendiente de validación:</strong> las cantidades exactas por rubro
+      (número de kits, despensas y raciones) se publicarán en la versión final
+      de este boletín, con el visto bueno de la mesa directiva.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Acción 4</p>
+    <h2>Derechos que ahora tienen palabras: la campaña avanza</h2>
+    <p>
+      Con el respaldo de un <strong>dictamen jurídico</strong> elaborado por el servicio
+      social de Derecho, publicamos las primeras infografías de la serie
+      <em>«Derechos en Formato Ciudadano»</em>, que traducen a lenguaje cotidiano los
+      cinco ejes de derechos de la niñez con cáncer en el hospital:
+    </p>
+    <div class="ejes">
+      <div class="eje"><b>1 · Salud integral y oportuna</b>Diagnóstico temprano y tratamiento sin interrupciones.</div>
+      <div class="eje"><b>2 · Información adaptada</b>Que cada niña y niño entienda qué le pasa y qué sigue.</div>
+      <div class="eje"><b>3 · Acompañamiento familiar</b>Su familia se queda con él o ella. Siempre.</div>
+      <div class="eje"><b>4 · Juego y educación</b>Su infancia no se detiene por estar hospitalizado.</div>
+      <div class="eje"><b>5 · Trato digno y alivio del dolor</b>Cuidados paliativos y atención humana en todo momento.</div>
+    </div>
+    <p style="margin-top:14px">
+      Las infografías se colocarán en salas de espera y áreas comunes del hospital, y se
+      pueden descargar gratis en la sección <em>Derechos en Formato Ciudadano</em> del sitio.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Lo que sigue</p>
+    <h2>Próximos pasos</h2>
+    <ul>
+      <li>Completar la serie de infografías (piezas 2 y 3) y llevarlas impresas al hospital.</li>
+      <li>Talleres breves a madres, padres y cuidadores sobre exigibilidad de estos derechos.</li>
+      <li>Publicar la versión validada de este boletín con cifras por rubro.</li>
+    </ul>
+  </section>
+
+  <footer class="pie">
+    <p><strong>Voluntariado El Corazón de Joel de Jesús</strong> · Guadalajara, Jalisco</p>
+    <p>corazondejoeldejesus.2002@gmail.com · Tel. 33 1670 9118</p>
+    <p style="margin-top:8px">
+      Ninguna fotografía de este boletín muestra el rostro de una niña, niño o adolescente.
+      Publicado con consentimiento de las personas adultas que aparecen.
+    </p>
+  </footer>
+</div>
+
+<p class="imprimir">
+  <button type="button" onclick="window.print()">🖨️ Imprimir o guardar como PDF</button>
+</p>
+
+</body>
+</html>
