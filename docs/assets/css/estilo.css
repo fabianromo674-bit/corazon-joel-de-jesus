@@ -276,16 +276,19 @@ a:hover { color: var(--navy); }
 .marca:hover .marca-texto b { color: var(--oro); }
 
 .menu { display: flex; align-items: center; gap: 4px; list-style: none; }
-.menu a {
+/* Se excluye .boton en todas estas reglas: el menú del celular contiene el
+   botón "Quiero ayudar", y si hereda el color claro del menú queda en
+   2.75:1 sobre coral. Con su color propio (azul marino) da 4.88:1 ✔ AA. */
+.menu a:not(.boton) {
   display: block; color: var(--cielo); text-decoration: none;
   font-weight: 500; font-size: 15.5px; padding: 10px 13px; border-radius: 8px;
   transition: background var(--transicion), color var(--transicion);
 }
-.menu a:hover { color: var(--blanco); background: rgba(255, 255, 255, .1); }
+.menu a:not(.boton):hover { color: var(--blanco); background: rgba(255, 255, 255, .1); }
 /* Página actual: se marca con color Y con una línea dorada
    (no solo color, para no depender de la vista del usuario). */
-.menu a[aria-current="page"] { color: var(--blanco); background: rgba(255, 255, 255, .12); }
-.menu a[aria-current="page"]::after {
+.menu a:not(.boton)[aria-current="page"] { color: var(--blanco); background: rgba(255, 255, 255, .12); }
+.menu a:not(.boton)[aria-current="page"]::after {
   content: ""; display: block; height: 2px; background: var(--oro);
   border-radius: 2px; margin-top: 4px;
 }
@@ -325,9 +328,9 @@ a:hover { color: var(--navy); }
     border-bottom: 3px solid var(--oro); box-shadow: var(--sombra-alta);
   }
   .menu.abierto { display: flex; }
-  .menu a { padding: 15px 12px; font-size: 17px; border-bottom: 1px solid rgba(255, 255, 255, .1); }
-  .menu a[aria-current="page"]::after { display: none; }
-  .menu a[aria-current="page"] { border-left: 3px solid var(--oro); }
+  .menu a:not(.boton) { padding: 15px 12px; font-size: 17px; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+  .menu a:not(.boton)[aria-current="page"]::after { display: none; }
+  .menu a:not(.boton)[aria-current="page"] { border-left: 3px solid var(--oro); }
   .menu .boton { margin-top: 16px; justify-content: center; }
 }
 
