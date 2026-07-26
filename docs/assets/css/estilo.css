@@ -100,11 +100,16 @@ a { color: var(--azul-2); text-underline-offset: .18em; }
 a:hover { color: var(--navy); }
 
 /* Foco visible en TODO elemento interactivo (requisito de accesibilidad).
-   Se usa oro + halo oscuro para que se vea en fondo claro y oscuro. */
+   Son DOS aros, uno dentro del otro, y cada uno resuelve un fondo:
+     · halo azul marino pegado al elemento → se ve sobre fondos claros (12.6:1)
+     · aro dorado por fuera               → se ve sobre azul marino (8.9:1)
+   Con un solo aro dorado el foco quedaba en 1.8:1 sobre blanco, es decir
+   prácticamente invisible en la mayor parte del sitio. */
 :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
   outline: 3px solid var(--oro);
   outline-offset: 3px;
   border-radius: 4px;
+  box-shadow: 0 0 0 3px var(--navy);
 }
 
 /* Respeta a quien pidió menos animación en su sistema operativo. */
@@ -401,7 +406,10 @@ a:hover { color: var(--navy); }
 .seccion.oscuro { background: var(--navy); color: var(--cielo); }
 .seccion.oscuro h2, .seccion.oscuro h3, .seccion.oscuro h4 { color: var(--blanco); }
 .seccion.oscuro .titulo p { color: var(--cielo); }
-.seccion.oscuro a { color: var(--menta); }
+/* Los enlaces de texto sobre azul marino van en menta (9.9:1 ✔ AA).
+   Los botones NO: conservan su propio color, porque el texto menta
+   sobre coral daría 2:1 y sería ilegible. */
+.seccion.oscuro a:not(.boton) { color: var(--menta); }
 
 .titulo { max-width: 58ch; margin-bottom: 42px; }
 .titulo h2 { font-size: clamp(30px, 3.8vw, 43px); margin: 12px 0 14px; }
@@ -573,7 +581,9 @@ a:hover { color: var(--navy); }
     repeating-linear-gradient(45deg, var(--hielo) 0 12px, #ece5e5 12px 24px);
   border: 2px dashed var(--piedra);
   display: grid; place-items: center; text-align: center;
-  color: var(--gris); font-size: 14px; padding: 20px;
+  /* Gris más oscuro que --gris: sobre las franjas del placeholder,
+     --gris solo alcanza 4.42:1 y no cumple AA. Este da 5.71:1 ✔ */
+  color: #4a5a6a; font-size: 14px; padding: 20px;
 }
 .foto-pendiente b { display: block; color: var(--navy); font-family: var(--fuente-cuerpo); font-size: 15px; margin-bottom: 4px; }
 
@@ -642,10 +652,16 @@ a:hover { color: var(--navy); }
 .foto-mosaico:hover img { transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) { .foto-mosaico:hover img { transform: none; } }
 .foto-mosaico figcaption {
-  position: absolute; inset: auto 0 0 0; padding: 34px 16px 13px;
-  /* Degradado oscuro para que el texto blanco siempre contraste */
-  background: linear-gradient(transparent, rgba(12, 34, 70, .88));
+  position: absolute; inset: auto 0 0 0; padding: 40px 16px 13px;
+  /* El texto blanco va encima de una FOTO, así que el degradado tiene que
+     garantizar el contraste incluso si la foto es clara: para cuando
+     empieza el texto ya es azul marino casi opaco (12.9:1 ✔ AA). */
+  background: linear-gradient(
+    transparent 0%,
+    rgba(12, 34, 70, .72) 42%,
+    rgba(12, 34, 70, .95) 100%);
   color: var(--blanco); font-size: 15px; font-weight: 600; line-height: 1.35;
+  text-shadow: 0 1px 3px rgba(12, 34, 70, .9);
 }
 
 /* ----- Franja de evidencia (fotos chicas en sección oscura) ----- */
@@ -697,7 +713,11 @@ a:hover { color: var(--navy); }
 }
 .campo textarea { min-height: 150px; resize: vertical; }
 .campo input:focus, .campo textarea:focus, .campo select:focus { border-color: var(--azul); }
-.campo input:focus-visible, .campo textarea:focus-visible, .campo select:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+/* Mismo doble aro que el resto del sitio (ver sección 2) */
+.campo input:focus-visible, .campo textarea:focus-visible, .campo select:focus-visible {
+  outline: 3px solid var(--oro); outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--navy);
+}
 .nota-formulario {
   font-size: 15px; color: var(--gris); background: var(--hielo);
   border-radius: var(--radio-sm); padding: 16px 18px; border-left: 3px solid var(--azul);
