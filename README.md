@@ -1,321 +1,307 @@
 # Sitio web — Voluntariado El Corazón de Joel de Jesús
 
-Este es el sitio web de la asociación. Está hecho para que **ustedes lo puedan
-mantener sin ayuda de nadie** y sin pagar un solo peso de hosting.
+**El sitio ya está publicado y funcionando aquí:**
 
-Esta guía está escrita para una persona que **no sabe programar**. Si algo aquí
-no se entiende, es culpa de la guía, no suya: avísennos y lo simplificamos.
+### 👉 https://fabianromo674-bit.github.io/corazon-joel-de-jesus/
+
+Esta guía está escrita para una persona que **no sabe programar**. Si algo no se
+entiende, es culpa de la guía y no suya: avísennos y la corregimos.
+
+> **Regla de oro del proyecto:** todo lo que se construyó aquí lo tiene que poder
+> operar la asociación sin ayuda de nadie.
 
 ---
 
-## 📋 Lo que hay que saber en 30 segundos
+## 🔒 LO PRIMERO, Y LO MÁS IMPORTANTE
+
+> ### Nunca se publica la foto del rostro de una niña, un niño o un adolescente.
+>
+> **Ni con permiso firmado. Ni de espaldas si se le puede reconocer. Ni aunque
+> la foto sea bonita. Ni aunque un donante lo pida.**
+>
+> **Sí se puede fotografiar:** manos, materiales, juguetes, despensas, el aula
+> vacía, personas adultas (con su permiso), o niñas y niños **de espaldas**
+> cuando no haya forma de identificarles.
+>
+> Tampoco se publican nombres reales, escuelas, domicilios ni diagnósticos.
+
+Esta regla es el corazón del proyecto. El sitio se lo promete a las familias en
+el pie de todas las páginas: si se rompe, se rompe la confianza que sostiene
+todo lo demás.
+
+---
+
+## 📋 Lo que necesitan saber en 30 segundos
 
 | Quiero… | Voy a… |
 |---|---|
-| Cambiar el correo o el teléfono | Editar **solo** `docs/assets/js/contenido.js` |
-| Editar un programa (textos, lista, foto) | Editar `contenido.js` → sección `programas` |
-| Subir un boletín nuevo | Poner el PDF en `docs/assets/boletines/` y editar `contenido.js` |
-| Agregar una historia o infografía | Editar `contenido.js` |
-| Cambiar el lema, las cifras, el equipo o las preguntas de donantes | Editar `contenido.js` |
+| Cambiar el correo, el teléfono o el Facebook | `docs/assets/js/contenido.js` → `contacto` |
+| Cambiar los números de la portada | `contenido.js` → `cifras` |
+| Editar uno de los 4 programas | `contenido.js` → `programas` |
+| **Subir un boletín nuevo** | Poner el archivo en `docs/assets/boletines/` y editar `contenido.js` → `boletines` |
+| **Subir una infografía nueva** | Poner la imagen en `docs/assets/infografias/` y editar `contenido.js` → `infografias` |
+| Agregar una foto a la galería del inicio | Poner la foto en `docs/assets/img/fotos/` y editar `contenido.js` → `galeriaFotos` |
+| Agregar o cambiar una historia | `contenido.js` → `historias` |
+| Cambiar los roles del equipo | `contenido.js` → `equipo` |
+| Cambiar las preguntas de donantes | `contenido.js` → `preguntas` |
 | Cambiar un párrafo largo de una página | Abrir el `.html` de esa página y buscar `✏️ EDITABLE` |
-| Cambiar una foto | Poner la imagen en `docs/assets/img/` |
-| Publicar los cambios en internet | Subir los archivos a GitHub (ver más abajo) |
+| **Publicar los cambios en internet** | Ver la sección 6 de esta guía |
 
-> 💡 **Truco de negritas:** en cualquier texto de `contenido.js` pueden
-> escribir `**palabras importantes**` entre dobles asteriscos y saldrán
-> en negritas en la página.
-
-> **Regla de oro:** nunca borren archivos. Si algo sale mal, siempre se puede
-> deshacer con `Ctrl + Z` antes de guardar.
+**Casi todo se edita en un solo archivo:** `docs/assets/js/contenido.js`
 
 ---
 
-## 🗂️ Cómo está organizado
+## 🗂️ 1. Cómo está organizado
 
 ```
 CORAZON JOEL DE JESUS/
-├── docs/                    ← 🌐 EL SITIO. Esto es lo que se publica.
-│   ├── index.html                Página de Inicio
-│   ├── quienes-somos.html        Quiénes somos
-│   ├── que-hacemos.html          Qué hacemos
-│   ├── transparencia.html        Transparencia
-│   ├── historias.html            Historias de impacto
-│   ├── derechos-ciudadanos.html  Derechos en Formato Ciudadano
-│   ├── como-ayudar.html          Cómo ayudar
-│   ├── contacto.html             Contacto
-│   ├── 404.html                  Página de "no encontrado"
+├── docs/                        ← 🌐 EL SITIO (esto es lo que se publica)
+│   ├── index.html                   Inicio
+│   ├── quienes-somos.html           Quiénes somos
+│   ├── que-hacemos.html             Qué hacemos
+│   ├── transparencia.html           Transparencia
+│   ├── historias.html               Historias de impacto
+│   ├── derechos-ciudadanos.html     Derechos en Formato Ciudadano
+│   ├── como-ayudar.html             Cómo ayudar
+│   ├── contacto.html                Contacto
 │   └── assets/
-│       ├── js/contenido.js   ← 📝 AQUÍ SE EDITAN LOS DATOS
-│       ├── js/sitio.js          (no tocar)
-│       ├── css/estilo.css       (no tocar: colores y letras)
-│       ├── img/                 Logos e imágenes
-│       ├── boletines/        ← 📄 AQUÍ VAN LOS PDF DE BOLETINES
-│       └── infografias/      ← 🖼️ AQUÍ VAN LAS INFOGRAFÍAS
+│       ├── js/contenido.js      ← 📝 AQUÍ SE EDITA CASI TODO
+│       ├── js/sitio.js              (no tocar: hace funcionar el sitio)
+│       ├── css/estilo.css           (no tocar: colores y letras)
+│       ├── img/                     Logos
+│       ├── img/fotos/           ← 📷 AQUÍ VAN LAS FOTOS
+│       ├── boletines/           ← 📄 AQUÍ VAN LOS BOLETINES
+│       └── infografias/         ← 🖼️ AQUÍ VAN LAS INFOGRAFÍAS
 │
-├── previews/                Capturas de cada página, para revisar
-├── README.md                Esta guía
-└── CONTENIDO_PENDIENTE.md   Lista de lo que falta entregar
+├── README.md                    Esta guía
+├── CONTENIDO_PENDIENTE.md       Lista de lo que falta por entregar
+└── ARQUITECTURA.md              Explicación técnica (para programadores)
 ```
 
 **Solo importa la carpeta `docs/`.** Todo lo demás es documentación.
 
 ---
 
-## ✏️ 1. Cómo cambiar un texto
+## ✏️ 2. Las tres reglas para no romper nada
 
-Los textos largos viven dentro de las páginas `.html`.
+Cuando abran `contenido.js` van a ver textos entre comillas. Solo hay que
+respetar tres cosas:
 
-1. Abran la carpeta `docs/` y hagan **clic derecho** sobre la página que quieren
-   cambiar (por ejemplo `index.html`) → **Abrir con** → **Bloc de notas**.
-2. Busquen la marca `✏️ EDITABLE` (con `Ctrl + B` o `Ctrl + F` pueden buscarla).
-   Debajo de esa marca está el texto que se puede cambiar.
-3. Cambien **solo las palabras**, nunca los símbolos `<` y `>`.
-
-**Ejemplo.** Esto está en el archivo:
-
-```html
-<!-- ✏️ EDITABLE -->
-<h2>Cuatro caminos, un mismo destino</h2>
-```
-
-Si quieren que diga otra cosa, cambien **únicamente** lo que está en medio:
-
-```html
-<!-- ✏️ EDITABLE -->
-<h2>Nuestros programas</h2>
-```
-
-✅ Correcto: cambiar las palabras.
-❌ Incorrecto: borrar `<h2>` o `</h2>`.
-
-4. Guarden con `Ctrl + S`.
-
-> 💡 **Para ver cómo quedó antes de publicar:** hagan doble clic en el archivo
-> `index.html`. Se abre en su navegador y se ve el sitio completo, solo en su
-> computadora. Nadie más lo ve hasta que lo publiquen.
-
----
-
-## 📝 2. Cómo cambiar el correo, el teléfono o el Facebook
-
-Estos datos aparecen en **todas** las páginas. Por eso **no** se editan página
-por página: se editan **una sola vez** en un archivo.
-
-1. Abran `docs/assets/js/contenido.js` con el Bloc de notas.
-2. Hasta arriba encontrarán esto:
+**Regla 1 — Cambien solo lo que está entre comillas.**
 
 ```js
-contacto: {
-  correo: "corazondejoeldejesus.2002@gmail.com",
-  telefono: "33 1670 9118",
-  telefonoLink: "+523316709118",
-  ...
-}
+titulo: "Cambien este texto",
+         └────────────────┘   ✅ esto sí
+└────┘                        ❌ esta palabra NO se toca
 ```
 
-3. Cambien **solo lo que está entre comillas**.
+**Regla 2 — Cada línea termina con una coma. No la borren.**
 
-⚠️ **Ojo con el teléfono:** hay dos líneas. `telefono` es como se ve escrito y
-`telefonoLink` es el que usa el celular para marcar (lleva `+52` y va sin
-espacios). **Si cambia el número, cambien las dos.**
+**Regla 3 — Si el texto lleva comillas por dentro, usen comillas sencillas:**
+
+```js
+cita: "Ella dijo 'gracias' al salir",
+```
+
+> 💡 **Truco de negritas:** dentro de cualquier texto pueden poner palabras
+> entre dos asteriscos y saldrán en **negritas**:
+> `"Trabajamos en el **Hospital Civil** desde 2015"`
+
+### Si algo sale mal
+
+El sitio les va a mostrar un **aviso amarillo** arriba explicando que hay un
+error en `contenido.js` — en vez de quedarse en blanco. No cunda el pánico:
+
+1. Abran `contenido.js` y revisen lo último que cambiaron.
+2. ¿Está la coma al final? ¿Están las dos comillas completas?
+3. Si no lo encuentran, en GitHub pueden volver a la versión anterior
+   (pestaña **History** del archivo). **Nada se pierde nunca.**
+
+> 💡 **Para ver cómo quedó antes de publicar:** hagan doble clic en
+> `docs/index.html`. Se abre en su navegador, solo en su computadora.
+> Nadie más lo ve hasta que lo publiquen.
 
 ---
 
-## 📄 3. Cómo subir un boletín nuevo (lo más importante)
+## 📄 3. Cómo subir un boletín nuevo
 
-Esto es lo que van a hacer cada tres meses. Son 3 pasos.
+Esto es lo que van a hacer cada trimestre. Son 3 pasos.
 
-### Paso 1 — Guardar el PDF
+### Paso 1 — Guardar el archivo
 
-Copien el PDF dentro de la carpeta `docs/assets/boletines/`.
+Copien el PDF dentro de `docs/assets/boletines/`, con un nombre **sin espacios,
+sin acentos y sin eñes**:
 
-Pónganle un nombre **sin espacios, sin acentos y sin eñes**:
-
-- ✅ `boletin-2026-3T.pdf`
-- ❌ `Boletín 3er trimestre (final).pdf`
+- ✅ `boletin-2026-4T.pdf`
+- ❌ `Boletín 4to trimestre (final).pdf`
 
 ### Paso 2 — Anunciarlo en `contenido.js`
 
-Abran `docs/assets/js/contenido.js` y busquen la sección `boletines`.
-Verán bloques que empiezan con `{` y terminan con `},` así:
+Busquen la sección `boletines`. Verán bloques que empiezan con `{` y terminan
+con `},`. **Copien un bloque completo y péguenlo arriba de los demás** (el más
+nuevo va primero). Luego cámbienlo:
 
 ```js
 {
-  etiqueta: "Boletín · 2º trimestre 2026",
-  titulo: "Acciones y resultados del trimestre",
-  resumen: "Talleres impartidos, intervenciones hospitalarias y donaciones entregadas.",
-  archivo: null,
-  peso: "",
-  estado: "proximamente",
-},
-```
-
-**Copien un bloque completo** (desde `{` hasta `},`) y **péguenlo arriba de los
-demás** — el más nuevo va siempre primero. Luego cámbienlo:
-
-```js
-{
-  etiqueta: "Boletín · 3er trimestre 2026",
-  titulo: "Lo que hicimos de julio a septiembre",
+  etiqueta: "Boletín · 4º trimestre 2026",
+  titulo: "Lo que hicimos de octubre a diciembre",
   resumen: "Este trimestre acompañamos a 24 familias y dimos 6 talleres.",
-  archivo: "boletin-2026-3T.pdf",     ← el nombre EXACTO del PDF
+  archivo: "boletin-2026-4T.pdf",     ← el nombre EXACTO del archivo
   peso: "PDF · 1.2 MB",
   estado: "publicado",                ← cambiar a "publicado"
 },
 ```
 
-### Paso 3 — Publicar
+### Paso 3 — Publicar (ver sección 6)
 
-Suban los cambios a GitHub (ver la sección 6). En unos minutos el boletín ya se
-puede descargar desde el sitio.
+En un par de minutos el boletín ya se puede descargar desde el sitio.
 
 > **¿Y si el boletín todavía no está listo?** Déjenlo con `archivo: null` y
-> `estado: "proximamente"`. La tarjeta se ve, pero sin botón de descarga.
-> Es mejor decir «viene en camino» que no decir nada.
+> `estado: "proximamente"`. La tarjeta se ve, pero sin botón de descarga. Es
+> mejor decir «viene en camino» que no decir nada.
+
+> **Nota:** el boletín n.º 1 está hecho como página web (`.html`) en vez de PDF,
+> para que se pueda leer bien en el celular. El sitio detecta solo el tipo de
+> archivo: si es `.html` dice «Leer», si es PDF o Word dice «Descargar».
 
 ---
 
-## 🖼️ 4. Cómo cambiar o poner una foto
+## 🖼️ 4. Cómo subir una infografía de la campaña
 
-### Dónde van los espacios de foto
+### Paso 1 — Guardar la imagen
 
-En el sitio verán unos recuadros grises punteados que dicen
-**«Espacio para fotografía»**. Ahí van sus fotos.
+Póngala en `docs/assets/infografias/`, con nombre sin espacios ni acentos.
+Formato vertical (más alta que ancha) y **menos de 400 KB**.
 
-### 🔒 REGLA ABSOLUTA — LEER ANTES DE SUBIR CUALQUIER FOTO
+### Paso 2 — Anunciarla en `contenido.js` → `infografias`
 
-> **Nunca, por ningún motivo, se publica la foto del rostro de una niña, un niño
-> o un adolescente.** Ni con permiso. Ni de espaldas si se le puede reconocer.
-> Ni aunque se vea bonita. Ni aunque un donante lo pida.
->
-> **Sí se puede fotografiar:** manos, materiales, juguetes, espacios, el aula
-> vacía, el equipo de voluntariado adulto (con su permiso).
-
-### Cómo hacerlo
-
-1. Guarden la foto en `docs/assets/img/`, con nombre sin espacios ni acentos
-   (ejemplo: `taller-escuela-2026.jpg`).
-2. En la página, busquen el bloque que dice `foto-pendiente` y reemplácenlo por:
-
-```html
-<img src="assets/img/taller-escuela-2026.jpg"
-     alt="Materiales del taller de derechos sobre una mesa."
-     loading="lazy" width="800" height="600">
+```js
+{
+  tema: "Acompañamiento",          ← esto crea el botón de filtro
+  titulo: "3 · Mi familia se queda conmigo",
+  resumen: "El acompañamiento familiar en el hospital no es una cortesía.",
+  archivo: "infografia-3-acompanamiento.jpg",
+  alt: "Infografía sobre el derecho al acompañamiento familiar.",
+  estado: "publicado",
+},
 ```
 
-3. El texto de `alt=` es **obligatorio**: es lo que escucha una persona ciega.
-   Describan lo que se ve en una frase corta.
+**Sobre `tema`:** los botones de filtro de la galería se crean solos con los
+temas que ustedes escriban. Si usan un tema nuevo, aparece un botón nuevo.
+Si repiten uno existente, la pieza se suma a ese filtro.
 
-> 💡 **Que la foto no pese mucho.** Antes de subirla, redúzcanla a un máximo de
-> 1600 píxeles de ancho. Se puede hacer gratis en <https://squoosh.app>
-> (funciona en el navegador, no hay que instalar nada). Una foto de más de
-> 500 KB hace lento el sitio en celulares.
+**Sobre `alt`:** es la descripción que escucha una persona ciega. **Es
+obligatoria.** Describan lo que se ve en una frase.
 
 ---
 
-## 🚀 5. Cómo publicar el sitio en internet (GRATIS)
+## 📷 5. Cómo agregar una foto a la galería del inicio
 
-Se usa **GitHub Pages**. Es gratuito y no caduca. Esto se hace **una sola vez**.
+> ⚠️ **Antes de nada, relean la regla de protección de la infancia al principio
+> de esta guía.** Si la foto muestra el rostro de un menor de edad, no se sube.
+> Punto.
 
-### La primera vez (configuración inicial)
+### Paso 1 — Preparar la foto
 
-1. Entren a <https://github.com> y creen una cuenta gratuita con el correo de la
-   asociación.
-2. Ya dentro, den clic en el botón verde **New** (crear repositorio nuevo).
-3. En **Repository name** escriban: `corazondejoeldejesus`
-4. Elijan **Public** (público). Debe ser público para que el sitio sea gratis.
-5. Den clic en **Create repository**.
-6. En la pantalla que sigue, den clic en **uploading an existing file**
-   («subiendo un archivo existente»).
-7. **Arrastren la carpeta `docs` completa** a esa ventana. Esperen a que
-   terminen de subir todos los archivos (puede tardar unos minutos).
-8. Abajo den clic en el botón verde **Commit changes**.
-9. Arriba, entren a la pestaña **Settings** (Configuración) → en el menú de la
-   izquierda busquen **Pages**.
-10. En **Source** elijan **Deploy from a branch**.
-11. En **Branch** elijan `main`, y a un lado, en la carpeta, elijan **`/docs`**.
-12. Den clic en **Save**.
-13. Esperen unos 2 minutos y recarguen esa página. Va a aparecer un recuadro
-    verde con la dirección de su sitio:
+1. Guárdenla en `docs/assets/img/fotos/`, con nombre sin espacios ni acentos.
+2. **Que no pese mucho:** redúzcanla a máximo 1400 píxeles de ancho. Se puede
+   hacer gratis en <https://squoosh.app> (funciona en el navegador, no hay que
+   instalar nada). Una foto de más de 500 KB hace lento el sitio en celulares.
 
-    **https://<su-usuario>.github.io/corazondejoeldejesus/**
+### Paso 2 — Anunciarla en `contenido.js` → `galeriaFotos`
 
-    ¡Eso es todo! Ese enlace ya se puede compartir.
+```js
+{
+  archivo: "fotos/taller-escuela-2026.jpg",
+  titulo: "Taller de derechos en primaria",
+  alt: "Materiales del taller sobre una mesa del aula.",
+},
+```
 
-### Cada vez que quieran cambiar algo
+La primera foto de la lista es la que se ve más grande en la galería: pongan
+ahí la más representativa.
 
-1. Entren a su repositorio en GitHub.
-2. Naveguen hasta el archivo que quieren cambiar (por ejemplo
-   `docs/assets/js/contenido.js`).
+---
+
+## 🚀 6. Cómo publicar los cambios en internet
+
+El sitio vive en **GitHub Pages**, que es gratuito y no caduca. Ya está todo
+configurado; solo hay que subir los cambios.
+
+### Opción A — Desde la página de GitHub (la más fácil)
+
+1. Entren a
+   [github.com/fabianromo674-bit/corazon-joel-de-jesus](https://github.com/fabianromo674-bit/corazon-joel-de-jesus)
+2. Naveguen hasta el archivo que quieren cambiar
+   (por ejemplo `docs` → `assets` → `js` → `contenido.js`).
 3. Den clic en el ícono del **lápiz** ✏️ (arriba a la derecha).
 4. Hagan el cambio directamente ahí.
-5. Bajen y den clic en **Commit changes**.
-6. Esperen 1 o 2 minutos. El sitio se actualiza solo.
+5. Bajen y den clic en el botón verde **Commit changes**.
+6. Esperen 1 o 2 minutos. **El sitio se actualiza solo.**
 
-**Para subir un PDF nuevo:** entren a la carpeta `docs/assets/boletines/` en
-GitHub → botón **Add file** → **Upload files** → arrastren el PDF →
-**Commit changes**.
+**Para subir un archivo nuevo** (un boletín, una foto, una infografía):
+entren a la carpeta correspondiente en GitHub → botón **Add file** →
+**Upload files** → arrastren el archivo → **Commit changes**.
 
-> ⚠️ **Después de publicar, hay que corregir una dirección.** Si su sitio quedó
-> en una dirección distinta a `https://corazondejoeldejesus.github.io/`, hay que
-> actualizarla en los archivos `docs/sitemap.xml` y en la línea `canonical` de
-> cada página. Esto solo afecta a Google, no a que el sitio funcione. Si no
-> saben hacerlo, pídannos apoyo: es un cambio de 10 minutos.
+### Opción B — Desde la computadora (si trabajan con los archivos locales)
 
----
+Abran una terminal en la carpeta del proyecto y escriban estas dos líneas:
 
-## ❓ 6. Si algo sale mal
+```bash
+git add -A ; git commit -m "Describan aquí qué cambiaron"
+```
 
-### Aparece un aviso amarillo arriba del sitio
+```bash
+git push
+```
 
-Dice: *«Hay un error en el archivo contenido.js»*.
+En 1 o 2 minutos el sitio público queda actualizado.
 
-Significa que al editar `contenido.js` se borró una coma o una comilla.
-El sitio les avisa en vez de quedarse en blanco. **No cunda el pánico:**
+### Si el sitio no se actualiza
 
-1. Abran `contenido.js`.
-2. Revisen lo último que cambiaron: ¿está la coma `,` al final de la línea?
-   ¿están las dos comillas `"` completas?
-3. Si no lo encuentran, en GitHub pueden ver el historial y regresar a la
-   versión anterior (pestaña **History** del archivo).
-
-### El sitio no se actualiza
-
-Esperen 3 minutos y recarguen con `Ctrl + F5` (recarga forzada). GitHub tarda
-un poco en publicar.
-
-### Se borró algo por accidente
-
-GitHub guarda **todas** las versiones anteriores. Nada se pierde de verdad.
-Entren al archivo → pestaña **History** → elijan una versión anterior.
+Esperen 3 minutos y recarguen la página con `Ctrl + F5` (recarga forzada).
+GitHub tarda un poco en publicar.
 
 ---
 
-## 🎨 7. Notas de diseño (para quien nos suceda)
+## ♿ 7. Por qué el sitio se ve así (no lo cambien sin avisar)
 
-- **Colores y tipografías** están todos en `docs/assets/css/estilo.css`, en el
-  bloque `:root` de hasta arriba. Son los oficiales del Manual de Identidad.
-- **Contraste verificado:** los pares de color están anotados en el CSS con su
-  medición WCAG. El botón principal usa **coral con texto azul marino** (4.88:1)
-  porque coral con texto blanco solo llega a 3.23:1 y **no cumpliría** la norma
-  de accesibilidad.
-- **Tipografía de cuerpo:** la oficial es **Codec Pro**, que es de pago. El sitio
-  usa **Jost** (gratis) como sustituto. Si algún día compran Codec Pro, basta
-  agregarla al inicio de la lista `--fuente-cuerpo` en el CSS.
-- **El logo aparece una sola vez por página**, como pide el manual: el logo
-  completo va en la portada de Inicio y en el pie de las demás páginas; el
-  corazón solo va en la barra de arriba y en el ícono de la pestaña.
-- **La línea dorada de kintsugi** entre secciones es el elemento firma. Se dibuja
-  sola con `sitio.js`; no hay que hacer nada.
-- **Sin rastreadores, sin cookies, sin Google Analytics.** El sitio no recoge
-  ningún dato de quien lo visita.
+El diseño no es decorativo: está construido para que **cualquier persona** pueda
+usarlo, incluidos donantes mayores y personas con discapacidad visual.
+
+- **Letra grande (18px) e interlineado amplio**, pensado para adultos mayores.
+- **Contraste de color verificado** con la norma internacional WCAG AA. Cada
+  combinación está medida y anotada en el CSS. Por ejemplo, el botón principal
+  es coral con texto azul marino (4.88:1) y **no** coral con texto blanco, que
+  se queda en 3.23:1 y no cumpliría.
+- **Se puede navegar todo el sitio solo con el teclado**, y el recuadro que
+  indica dónde está uno se ve tanto sobre fondo claro como oscuro.
+- **Respeta a quien pidió menos animación** en la configuración de su
+  computadora o celular.
+- **Todas las imágenes tienen descripción** para lectores de pantalla.
+- **Funciona sin JavaScript**: se pierden los efectos, no la información.
+- **Cero rastreadores, cero cookies, cero costo.** El sitio no recoge ningún
+  dato de quien lo visita.
+
+### Sobre los colores y las letras
+
+Son los oficiales del Manual de Identidad y están todos juntos hasta arriba del
+archivo `docs/assets/css/estilo.css`. La tipografía oficial del cuerpo es
+**Codec Pro**, que es de pago; el sitio usa **Jost** (gratuita) como sustituto.
+Si algún día compran Codec Pro, se agrega en una sola línea.
+
+### Sobre el logo
+
+Aparece **una sola vez por página**, como pide el manual: el logo completo en la
+portada del inicio y en el pie de las demás páginas; el corazón solo en la barra
+de arriba y en el ícono de la pestaña. Sobre azul marino siempre va dentro de
+una tarjeta blanca.
 
 ---
 
 ## 📞 Dudas
 
 Cualquier cosa que no se entienda de esta guía es un error nuestro.
-Escríbannos y lo corregimos.
+Escríbannos y la corregimos.
 
-**Regla de oro del proyecto:** todo lo que se construyó aquí lo tiene que poder
-operar la asociación sin nosotros.
+**Lo que falta por entregar** está en [CONTENIDO_PENDIENTE.md](CONTENIDO_PENDIENTE.md).
