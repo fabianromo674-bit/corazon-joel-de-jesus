@@ -147,7 +147,9 @@
     if (!m) return;                        // si no empieza con número, se deja tal cual
     var meta = parseInt(m[1], 10);
     var sufijo = m[2] || "";
-    if (meta > 3000) return;               // años (2015) no se animan
+    // Un año (2015) no es una cantidad: contar desde cero hasta él se ve
+    // raro y confunde. Solo se animan las cantidades.
+    if (meta >= 1900 && meta <= 2200 && !sufijo) return;
     var inicio = null;
     var dur = 1100;
     function paso(t) {
