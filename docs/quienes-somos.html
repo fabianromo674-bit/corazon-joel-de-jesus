@@ -62,7 +62,7 @@
 <main id="contenido">
 
   <!-- ===================== PORTADA ===================== -->
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/comedor-comunitario.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 330 C 200 300, 300 230, 500 210 S 820 180, 980 120 S 1240 70, 1460 40" stroke-width="1.5" opacity=".5"/>
@@ -145,6 +145,16 @@
       </div>
     </div>
   </section>
+
+  <!-- ===================== BANDA FOTOGRÁFICA =====================
+       ✏️ Para cambiar la foto, cambien el archivo en --foto -->
+  <aside class="banda-foto" style="--foto:url('../img/fotos/entrega-despensa.jpg')">
+    <div class="envoltura">
+      <!-- ✏️ EDITABLE -->
+      <p class="frase">Diez años después, seguimos <em>volviendo</em> al mismo lugar.</p>
+      <p class="pie-frase">Entrega directa a familias · Sin intermediarios</p>
+    </div>
+  </aside>
 
   <div class="kintsugi" data-kintsugi data-fondo="#fbf8f6"></div>
 
@@ -379,8 +389,10 @@
 <!-- ===================== PIE DE PÁGINA ===================== -->
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <!-- Logo completo, versión con tagline. Va en tarjeta blanca
              porque el fondo es azul marino (regla del manual).
              Aparece UNA sola vez en esta página. -->

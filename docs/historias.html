@@ -60,7 +60,7 @@
 
 <main id="contenido">
 
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/manos-tazones.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 340 C 210 310, 330 240, 530 215 S 850 170, 1010 115 S 1270 65, 1460 34" stroke-width="1.5" opacity=".5"/>
@@ -115,6 +115,15 @@
       </div>
     </div>
   </section>
+
+  <!-- ===================== BANDA FOTOGRÁFICA ===================== -->
+  <aside class="banda-foto" style="--foto:url('../img/fotos/ninos-juego.jpg')">
+    <div class="envoltura">
+      <!-- ✏️ EDITABLE -->
+      <p class="frase">Un balón, un pastel, una tarde. También eso es <em>restituir</em>.</p>
+      <p class="pie-frase">Los rostros de niñas y niños se difuminan para proteger su identidad</p>
+    </div>
+  </aside>
 
   <div class="kintsugi" data-kintsugi data-fondo="#fbf8f6"></div>
 
@@ -219,8 +228,10 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <div class="caja-logo">
           <img src="assets/img/logo_completo.png"
                alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables."

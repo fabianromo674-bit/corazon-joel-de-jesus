@@ -60,7 +60,7 @@
 
 <main id="contenido">
 
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/kits-dentales.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 320 C 200 290, 340 220, 540 200 S 860 160, 1020 110 S 1280 60, 1460 36" stroke-width="1.5" opacity=".5"/>
@@ -235,8 +235,10 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <div class="caja-logo">
           <img src="assets/img/logo_completo.png"
                alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables."

@@ -417,6 +417,16 @@
     datos.historias.forEach(function (h) {
       var fig = crear("figure", "historia");
 
+      // Foto de CONTEXTO del programa, nunca de quien da el testimonio
+      if (h.foto) {
+        var im = crear("img", "foto-historia");
+        im.src = "assets/img/" + h.foto;
+        im.alt = h.fotoAlt || "";
+        im.loading = "lazy";
+        im.decoding = "async";
+        fig.appendChild(im);
+      }
+
       var q = crear("blockquote");
       q.textContent = h.cita;
       fig.appendChild(q);
@@ -565,6 +575,32 @@
       cap.textContent = f.titulo;
       fig.appendChild(cap);
 
+      cont.appendChild(fig);
+    });
+  }
+
+  /* ================================================================
+     5-ter) TIRA FOTOGRÁFICA DEL PIE DE PÁGINA
+     ----------------------------------------------------------------
+     Cierre visual en todas las páginas. Toma las primeras 6 fotos de
+     la galería y las muestra en monocromo azul marino; al pasar el
+     puntero recuperan su color. Es decorativa, así que se marca como
+     aria-hidden: quien usa lector de pantalla ya escuchó esas mismas
+     fotos en la galería del inicio y no necesita oírlas de nuevo.
+     ================================================================ */
+  function pintarTiraPie() {
+    var cont = $("[data-pie-tira]");
+    if (!cont || !datos.galeriaFotos || !datos.galeriaFotos.length) return;
+
+    cont.setAttribute("aria-hidden", "true");
+    datos.galeriaFotos.slice(0, 6).forEach(function (f) {
+      var fig = crear("figure");
+      var img = crear("img");
+      img.src = "assets/img/" + f.archivo;
+      img.alt = "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      fig.appendChild(img);
       cont.appendChild(fig);
     });
   }
@@ -811,6 +847,7 @@
       pintarInfografias();
       pintarFiltrosInfografias();
       pintarGaleriaFotos();
+      pintarTiraPie();
       menuMovil();
       pintarKintsugi();
       dimensionesRestitucion();

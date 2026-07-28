@@ -75,18 +75,23 @@ navegación y en el ícono de la pestaña.
 
 ### Dónde hacen falta
 
-- [x] ✅ Programa 01, Intervención hospitalaria — publicada (con edición de
-      protección: la identidad del paciente se pixeló)
-- [ ] 🔴 Programa 02, Talleres en escuelas — las fotos de talleres recibidas
-      muestran rostros de menores y NO se pueden publicar; falta una toma
-      del aula, de los materiales o del grupo de espaldas
-- [ ] 🔴 Programa 03, Familias y cuidadores — mismo caso: la foto grupal
-      recibida muestra rostros posiblemente de menores de edad
+- [x] ✅ Programa 01, Intervención hospitalaria — publicada
+- [x] ✅ Programa 02, Talleres en escuelas — publicada
+- [x] ✅ Programa 03, Familias y cuidadores — publicada
 
 > 📸 **Sobre las fotos que enviaron (julio 2026):** de 17 fotos recibidas se
-> publicaron 11 (2 con edición de protección). Se excluyeron 6 por mostrar
-> rostros identificables de menores o contextos sensibles. No es un capricho:
-> es la regla que el propio sitio promete en su pie de página.
+> publicaron **16**. A 5 de ellas se les **difuminó el rostro** de las niñas y
+> niños (un total de 21 caras cubiertas), de forma irreversible: la zona se
+> reduce a bloques de color y la información original se destruye, no se puede
+> recuperar. Así el sitio muestra el trabajo real sin exponer a nadie.
+>
+> **Se excluyeron 2 fotografías** de grupo tomadas en lo que parece un centro
+> de atención a mujeres. No fue por los rostros —esos se podían difuminar—
+> sino porque difuminar 30 caras habría destruido la imagen, y porque
+> publicar a personas posiblemente usuarias de un refugio es un riesgo mayor
+> que el de la niñez: puede comprometer su seguridad. Si la asociación
+> confirma que ese espacio y esas personas dan su consentimiento, se pueden
+> incorporar en minutos.
 
 ### Requisitos técnicos
 

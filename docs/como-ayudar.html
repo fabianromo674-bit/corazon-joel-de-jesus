@@ -60,7 +60,7 @@
 
 <main id="contenido">
 
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/entrega-despensa.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 330 C 210 300, 330 230, 530 210 S 850 165, 1010 110 S 1270 62, 1460 32" stroke-width="1.5" opacity=".5"/>
@@ -94,6 +94,7 @@
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.4-7 10-7 10Z" stroke="#0c2246" stroke-width="1.8"/><path d="M8 11h2l1.2-2.5L13 13l1-2h2" stroke="#f16047" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <!-- ✏️ EDITABLE -->
+          <img class="foto-via" src="assets/img/fotos/kits-dentales.jpg" alt="Kits de higiene dental nuevos, listos para entregarse." loading="lazy" decoding="async">
           <h3>Dona</h3>
           <p>
             En efectivo o en especie. Cada apoyo se dirige a donde el diagnóstico situacional
@@ -112,6 +113,7 @@
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#0c2246" stroke-width="1.8"/><circle cx="17" cy="10" r="2.4" stroke="#0c2246" stroke-width="1.8"/><path d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M14.5 15.2c2.3.2 4.3 1.4 4.9 3.8" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
           <!-- ✏️ EDITABLE -->
+          <img class="foto-via" src="assets/img/fotos/entrega-hospital.jpg" alt="Voluntarios entregando alimentos a familias en un pasillo del hospital." loading="lazy" decoding="async">
           <h3>Sé voluntario</h3>
           <p>
             Acompañamiento en hospital, talleres, colectas y logística. Pedimos algo simple y
@@ -130,6 +132,7 @@
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M4 20V9l5-3 5 3v11" stroke="#0c2246" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 20V12l6-2v10M3 20h18" stroke="#0c2246" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 12h1M7 15h1M17 15h1" stroke="#f16047" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
           <!-- ✏️ EDITABLE -->
+          <img class="foto-via" src="assets/img/fotos/jugos-donados.jpg" alt="Cajas de jugos individuales donados, listos para distribuirse." loading="lazy" decoding="async">
           <h3>Alíate</h3>
           <p>
             Empresas, escuelas, universidades y fundaciones: construimos programas con objetivos
@@ -261,8 +264,10 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <div class="caja-logo">
           <img src="assets/img/logo_completo.png"
                alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables."

@@ -60,7 +60,7 @@
 
 <main id="contenido">
 
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/hospital-habitacion.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 310 C 200 285, 320 210, 520 195 S 840 155, 1000 105 S 1260 58, 1460 28" stroke-width="1.5" opacity=".5"/>
@@ -181,6 +181,15 @@
     </div>
   </section>
 
+  <!-- ===================== BANDA FOTOGRÁFICA ===================== -->
+  <aside class="banda-foto" style="--foto:url('../img/fotos/taller-aula.jpg')">
+    <div class="envoltura">
+      <!-- ✏️ EDITABLE -->
+      <p class="frase">Estas hojas terminan en una <em>sala de espera</em>. Ahí es donde sirven.</p>
+      <p class="pie-frase">Talleres y difusión en escuelas, comunidades y hospitales</p>
+    </div>
+  </aside>
+
   <div class="kintsugi" data-kintsugi data-fondo="#0c2246"></div>
 
   <!-- ===================== CÓMO USARLAS ===================== -->
@@ -240,8 +249,10 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <div class="caja-logo">
           <img src="assets/img/logo_completo.png"
                alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables."

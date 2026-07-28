@@ -287,6 +287,18 @@
     </div>
   </section>
 
+  <!-- ===================== BANDA FOTOGRÁFICA =====================
+       Respiro visual antes del llamado final. La fotografía va bajo un
+       velo azul marino para que la frase conserve contraste AA.
+       ✏️ Para cambiar la foto, cambien el nombre del archivo en --foto -->
+  <aside class="banda-foto" style="--foto:url('../img/fotos/donaciones-oncologia.jpg')">
+    <div class="envoltura">
+      <!-- ✏️ EDITABLE -->
+      <p class="frase">Nadie se repara <em>solo</em>. Por eso volvemos.</p>
+      <p class="pie-frase">Hospital Civil Nuevo «Dr. Juan I. Menchaca» · Guadalajara</p>
+    </div>
+  </aside>
+
   <!-- ===================== LLAMADO FINAL ===================== -->
   <section class="llamado" aria-labelledby="titulo-llamado">
     <div class="envoltura">
@@ -309,8 +321,10 @@
 <!-- ===================== PIE DE PÁGINA ===================== -->
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <!-- En esta página el logo completo ya aparece en la portada.
              Por regla del manual (usarlo una sola vez por vista), aquí
              va solo el nombre escrito. -->

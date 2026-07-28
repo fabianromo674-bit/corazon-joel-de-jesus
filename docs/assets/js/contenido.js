@@ -161,8 +161,8 @@ const CONTENIDO = {
           "Herramientas para que el personal docente detecte y canalice casos.",
         ],
         lugar: "Escuelas y comunidades del área metropolitana",
-        foto: null,
-        fotoAlt: "",
+        foto: "fotos/taller-aula.jpg",
+        fotoAlt: "Tallerista de pie frente a un grupo de niñas y niños sentados en un aula, durante una sesión con proyección. Los rostros de los menores están difuminados.",
       },
     },
     {
@@ -184,8 +184,8 @@ const CONTENIDO = {
           "Cuidar a quien cuida: el agotamiento del cuidador también es un factor de riesgo.",
         ],
         lugar: "Talleres a madres, padres, tutores y cuidadores",
-        foto: null,
-        fotoAlt: "",
+        foto: "fotos/convivencia-ninas.jpg",
+        fotoAlt: "Grupo de niñas con playeras rosas sentadas en unas escaleras, compartiendo tazones de comida en una convivencia comunitaria. Los rostros están difuminados para proteger su identidad.",
       },
     },
     {
@@ -275,18 +275,26 @@ const CONTENIDO = {
       programa: "Intervención hospitalaria",
       contexto: "Área de oncología pediátrica",
       verificada: false,
+      // Foto de contexto (opcional). NUNCA la foto de quien da el
+      // testimonio: es una imagen del programa, no de la persona.
+      foto: "fotos/hospital-habitacion.jpg",
+      fotoAlt: "Voluntario deja juguetes y alimentos en una habitación de hospital pediátrico.",
     },
     {
       cita: "El taller de disciplina positiva cambió la forma en que nos hablamos en casa. Hoy hay más calma.",
       programa: "Familias y cuidadores",
       contexto: "Madre de familia · Taller comunitario",
       verificada: false,
+      foto: "fotos/comedor-comunitario.jpg",
+      fotoAlt: "Voluntaria sirve alimentos durante una actividad comunitaria con personas adultas.",
     },
     {
       cita: "Volver a la escuela con útiles y apoyo fue volver a sentir que mi futuro importaba.",
       programa: "Talleres y educación",
       contexto: "Adolescente acompañada · Programa comunitario",
       verificada: false,
+      foto: "fotos/taller-aula.jpg",
+      fotoAlt: "Sesión de taller en un aula con niñas y niños; sus rostros están difuminados.",
     },
   ],
 
@@ -439,6 +447,31 @@ const CONTENIDO = {
       archivo: "fotos/comedor-comunitario.jpg",
       titulo: "Apoyo en comedores comunitarios",
       alt: "Voluntaria con cubrebocas sirve rebanadas de pastel a personas adultas mayores en un comedor.",
+    },
+    {
+      archivo: "fotos/hospital-habitacion.jpg",
+      titulo: "Juguetes y comida en la habitación",
+      alt: "Voluntario entrega juguetes y alimentos en una habitación de hospital. La identidad del paciente y su familiar está protegida.",
+    },
+    {
+      archivo: "fotos/taller-aula.jpg",
+      titulo: "Talleres de derechos en el aula",
+      alt: "Tallerista frente a un grupo de niñas y niños durante una sesión. Los rostros están difuminados.",
+    },
+    {
+      archivo: "fotos/manos-tazones.jpg",
+      titulo: "Lo que llega a sus manos",
+      alt: "Manos de niñas sosteniendo tazones con rebanadas de pastel durante una convivencia.",
+    },
+    {
+      archivo: "fotos/ninos-juego.jpg",
+      titulo: "También se trata de jugar",
+      alt: "Dos niños en un patio, uno con un balón de básquetbol y otro con un plato de pastel. Sus rostros no son identificables.",
+    },
+    {
+      archivo: "fotos/entrega-comedor.jpg",
+      titulo: "Entregas sin intermediarios",
+      alt: "Voluntario entrega un pastel y galletas a la encargada de un comedor comunitario.",
     },
   ],
 };

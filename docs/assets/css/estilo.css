@@ -350,6 +350,29 @@ a:hover { color: var(--navy); }
   opacity: .3; pointer-events: none;
 }
 .portada .envoltura { position: relative; z-index: 2; }
+
+/* ----- Portada CON FOTOGRAFÍA de fondo -----
+   La foto va bajo un velo azul marino al 72%. Ese número está medido,
+   no elegido a ojo: aunque la zona de la fotografía que queda detrás
+   del texto fuera blanco puro (el peor caso posible), el texto blanco
+   conserva 6.4:1 — bastante por encima del 4.5:1 que exige la norma AA.
+   Con más velo la foto desaparecía; con menos, el texto peligraba.
+
+   La foto se elige por página con  style="--foto:url('../img/fotos/x.jpg')"
+   ⚠️ OJO CON LA RUTA: aunque se escriba dentro del HTML, el navegador la
+      resuelve DESDE ESTE ARCHIVO CSS (que vive en assets/css/). Por eso
+      empieza con ../img/ y NO con assets/img/, que apuntaría al lugar
+      equivocado y dejaría la foto invisible. */
+.portada-foto::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(180deg, rgba(12, 34, 70, .68) 0%, rgba(12, 34, 70, .72) 45%, rgba(12, 34, 70, .88) 100%),
+    var(--foto);
+  background-size: cover, cover;
+  background-position: center, center;
+}
+/* Un hilo de oro en el borde inferior: la firma kintsugi */
+.portada-foto { border-bottom: 0; }
 .portada h1 {
   color: var(--blanco); font-size: clamp(38px, 5.6vw, 62px);
   max-width: 19ch; margin: 20px 0 22px;
@@ -672,6 +695,93 @@ a:hover { color: var(--navy); }
 .evidencia figure { margin: 0; border-radius: 12px; overflow: hidden; }
 .evidencia img { width: 100%; height: 190px; object-fit: cover; display: block; }
 .evidencia figcaption { font-size: 13.5px; color: var(--cielo); padding: 8px 2px 0; }
+
+/* =============================================================
+   13-bis. SISTEMA VISUAL DE FOTOGRAFÍA
+   Piezas para que el sitio respire imagen sin perder la formalidad
+   institucional. Todas respetan la regla: ninguna fotografía muestra
+   el rostro identificable de una niña, niño o adolescente.
+   ============================================================= */
+
+/* ----- Foto enmarcada con hilo de oro (kintsugi) -----
+   El marco dorado es el mismo gesto que la costura entre secciones:
+   lo que se enmarca con oro es lo que se decidió cuidar. */
+.marco-oro {
+  position: relative; margin: 0; border-radius: var(--radio);
+  overflow: hidden; box-shadow: var(--sombra-alta);
+}
+.marco-oro img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.marco-oro::after {
+  content: ""; position: absolute; inset: 0; border-radius: var(--radio);
+  border: 1px solid rgba(223, 192, 86, .55); pointer-events: none;
+}
+.marco-oro figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 38px 16px 13px;
+  background: linear-gradient(transparent, rgba(12, 34, 70, .72) 42%, rgba(12, 34, 70, .95));
+  color: var(--blanco); font-size: 14.5px; font-weight: 600; line-height: 1.35;
+  text-shadow: 0 1px 3px rgba(12, 34, 70, .9);
+}
+
+/* ----- Banda fotográfica a todo lo ancho, entre secciones -----
+   Corta el texto y deja respirar. El velo azul marino mantiene
+   legible cualquier texto que se ponga encima. */
+.banda-foto {
+  position: relative; min-height: 380px; display: grid; place-items: center;
+  /* Mismo criterio medido que la portada: velo al 72% (peor caso 6.4:1). */
+  background-image:
+    linear-gradient(rgba(12, 34, 70, .70), rgba(12, 34, 70, .76)),
+    var(--foto);
+  background-size: cover; background-position: center;
+  background-attachment: scroll;
+  color: var(--blanco); text-align: center; padding: 72px 0;
+}
+.banda-foto p.frase {
+  font-family: var(--fuente-titulo); font-size: clamp(24px, 3.4vw, 38px);
+  line-height: 1.3; max-width: 22ch; margin: 0 auto; color: var(--blanco);
+}
+.banda-foto p.frase em { font-style: normal; color: var(--oro); }
+.banda-foto .pie-frase {
+  margin-top: 16px; font-size: 15px; color: var(--cielo);
+}
+
+/* ----- Dos columnas: texto + fotografía ----- */
+.duo-foto { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.duo-foto .marco-oro { aspect-ratio: 4 / 3; }
+@media (max-width: 860px) { .duo-foto { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ----- Tira fotográfica del pie de página -----
+   Monocromo en azul marino para que no compita con el contenido:
+   es un cierre visual, no una galería. */
+.pie-tira {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px;
+  margin-bottom: 44px; border-radius: var(--radio-sm); overflow: hidden;
+}
+.pie-tira figure { position: relative; margin: 0; aspect-ratio: 1 / 1; overflow: hidden; }
+.pie-tira img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(1) contrast(1.05) brightness(.92);
+  transition: filter var(--transicion), transform var(--transicion);
+}
+.pie-tira figure::after {
+  content: ""; position: absolute; inset: 0;
+  background: var(--navy); mix-blend-mode: color; opacity: .78;
+}
+.pie-tira figure:hover img { filter: grayscale(0) contrast(1) brightness(1); transform: scale(1.05); }
+.pie-tira figure:hover::after { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .pie-tira figure:hover img { transform: none; } }
+@media (max-width: 700px) { .pie-tira { grid-template-columns: repeat(3, 1fr); } }
+
+/* ----- Historias con retrato de contexto ----- */
+.historia .foto-historia {
+  display: block; width: 100%; height: 170px; object-fit: cover;
+  border-radius: var(--radio-sm); margin-bottom: 18px;
+}
+
+/* ----- Encabezado fotográfico dentro de una tarjeta (Cómo ayudar) ----- */
+.via .foto-via {
+  display: block; width: calc(100% + 52px); margin: -30px -26px 22px;
+  height: 168px; object-fit: cover;
+}
 
 /* Antes / después de lenguaje ciudadano */
 .traduccion { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; }

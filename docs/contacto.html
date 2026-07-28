@@ -60,7 +60,7 @@
 
 <main id="contenido">
 
-  <div class="portada portada-interior">
+  <div class="portada portada-interior portada-foto" style="--foto:url('../img/fotos/entrega-hospital.jpg')">
     <svg class="vetas" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
       <g fill="none" stroke="#dfc056" stroke-linecap="round">
         <path d="M-20 320 C 205 295, 325 215, 525 200 S 845 158, 1005 108 S 1265 60, 1460 30" stroke-width="1.5" opacity=".5"/>
@@ -141,6 +141,13 @@
               </div>
             </li>
           </ul>
+
+          <!-- Foto enmarcada con hilo de oro -->
+          <figure class="marco-oro" style="margin-top:30px;aspect-ratio:4/3">
+            <img src="assets/img/fotos/entrega-comedor.jpg" loading="lazy" decoding="async"
+                 alt="Voluntario entrega un pastel y galletas a la encargada de un comedor comunitario.">
+            <figcaption>Detrás de cada correo hay alguien que responde.</figcaption>
+          </figure>
 
           <div class="aviso-proteccion" style="margin-top:32px">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-3 8.2-7 9.5-4-1.3-7-5.2-7-9.5V6l7-3Z" stroke="#0e5184" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#0e5184" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -237,8 +244,10 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="columnas">
-      <div>
+    <!-- Tira fotográfica: se genera sola desde contenido.js → galeriaFotos -->
+    <div class="pie-tira" data-pie-tira></div>
+
+    <div class="columnas">      <div>
         <div class="caja-logo">
           <img src="assets/img/logo_completo.png"
                alt="Voluntariado El Corazón de Joel de Jesús. Apoyando a nuestras infancias vulnerables."
