@@ -869,10 +869,21 @@
           _cc: cfg.copiaA || ""
         })
       })
-        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (r) {
+          // Si el servidor respondió con error (400, 500...), sí falló.
+          if (!r.ok) throw new Error("El servicio respondió " + r.status);
+          // Si respondió bien pero no podemos LEER su respuesta (pasa por
+          // las reglas de seguridad del navegador), el mensaje igual se
+          // envió. Antes esto se marcaba como fallo y se mostraba una
+          // alerta falsa al visitante.
+          return r.json().catch(function () { return null; });
+        })
         .then(function (res) {
-          var ok = res && (res.success === true || res.success === "true");
-          if (!ok) throw new Error(res && res.message ? res.message : "El servicio no confirmó el envío");
+          // Solo es fallo si el servicio dice EXPLÍCITAMENTE que falló
+          // (por ejemplo, cuando aún falta confirmar el correo).
+          if (res && (res.success === false || res.success === "false")) {
+            throw new Error(res.message || "El servicio rechazó el envío");
+          }
           form.reset();
           estado("ok",
             "✅ <strong>¡Mensaje enviado!</strong> Ya llegó al correo de la asociación. " +
