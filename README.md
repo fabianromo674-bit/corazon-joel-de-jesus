@@ -233,16 +233,44 @@ Cuando alguien llena el formulario de la página de Contacto, el mensaje
 
 1. Entren al sitio publicado, vayan a **Contacto** y manden un mensaje de
    prueba (pueden escribir «prueba» en todos los campos).
-2. Revisen la bandeja de **corazondejoeldejesus.2002@gmail.com**. Va a llegar
-   un correo de **FormSubmit** pidiendo confirmar la dirección.
+2. Revisen la bandeja del **correo principal** (hoy es el del estudiante de
+   servicio social; ver más abajo). Va a llegar un correo de **FormSubmit**
+   pidiendo confirmar la dirección.
    > Si no lo ven, revisen la carpeta de **correo no deseado / spam**.
 3. Ábranlo y den clic en el botón de activación.
-4. Listo. Desde ese momento **todos** los mensajes del formulario llegan solos
-   a su correo, para siempre. No hay que volver a hacer nada.
+4. Listo. Desde ese momento **todos** los mensajes del formulario llegan solos.
 
 > **Mientras no lo activen**, el formulario no se rompe: le abre a la persona
 > su programa de correo con el mensaje ya escrito. Nadie se queda sin poder
 > contactarlos.
+
+### 📮 A quién le llegan los mensajes hoy
+
+Durante el servicio social está configurado así, en `contenido.js` →
+`formulario`:
+
+| | Correo | Necesita activación |
+|---|---|---|
+| **Principal** | El del estudiante de servicio social | Sí (una vez) |
+| **Copia automática** | corazondejoeldejesus.2002@gmail.com | No |
+
+Se hizo así porque la activación exige entrar a la bandeja del correo
+principal, y durante el proyecto solo se tenía acceso a la cuenta del
+estudiante. **La asociación recibe copia de todos los mensajes desde el
+primer día, sin hacer nada.**
+
+### 🔁 Cómo pasarlo del todo a la asociación (cuando tengan acceso)
+
+Son dos cambios en `docs/assets/js/contenido.js`, en la sección `formulario`:
+
+1. En la línea `endpoint`, cambiar el correo del estudiante por
+   `corazondejoeldejesus.2002@gmail.com`
+2. Borrar la línea `copiaA` completa (o dejar ahí otro correo que quieran
+   que reciba copias)
+3. Publicar el cambio y **repetir la activación** (los 4 pasos de arriba),
+   esta vez confirmando desde el Gmail de la asociación.
+
+A partir de ahí, el sitio es 100% de la asociación.
 
 ### Qué recibe la asociación
 

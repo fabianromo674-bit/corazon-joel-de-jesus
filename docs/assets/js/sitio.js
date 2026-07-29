@@ -864,7 +864,9 @@
           // filtros en Gmail y clasificar los mensajes solos.
           _subject: "[Sitio web · " + d.motivo + "] " + d.nombre,
           _template: "table",
-          _autoresponse: cfg.respuestaAutomatica || ""
+          _autoresponse: cfg.respuestaAutomatica || "",
+          // Copia para la asociación (ver contenido.js → formulario.copiaA)
+          _cc: cfg.copiaA || ""
         })
       })
         .then(function (r) { return r.json().catch(function () { return {}; }); })

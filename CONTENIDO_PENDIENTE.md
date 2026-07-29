@@ -214,9 +214,19 @@ El formulario ya envía los mensajes al correo de la asociación, pero necesita
 **una activación única** que solo puede hacer quien tenga acceso a la bandeja
 de `corazondejoeldejesus.2002@gmail.com`.
 
-- [ ] 🔴 Mandar un mensaje de prueba desde la página de Contacto del sitio
-- [ ] 🔴 Abrir el correo de **FormSubmit** que llega (revisar también spam) y
-      dar clic en el botón de activación
+**Cómo está hoy:** el correo principal es el del **estudiante de servicio
+social** (la única bandeja a la que se tenía acceso para activar), y la
+asociación recibe **copia automática de todos los mensajes** sin tener que
+hacer nada.
+
+- [ ] 🔴 **El estudiante:** mandar un mensaje de prueba desde la página de
+      Contacto y confirmar el correo de activación de FormSubmit que llega
+      a su bandeja (revisar también spam). Esto enciende el formulario.
+- [ ] 🟡 **Verificar** que la copia llegue también a
+      corazondejoeldejesus.2002@gmail.com en ese mismo mensaje de prueba.
+- [ ] 🟡 **Cuando la asociación tenga el control:** cambiar el correo
+      principal al de la asociación y repetir la activación. Son dos líneas
+      en `contenido.js` → `formulario`, explicadas en el README sección 6.
 - [ ] 🟡 Crear los filtros de Gmail para clasificar por motivo
       (Donantes / Voluntariado / Alianzas) — instrucciones en el README
 - [ ] 🟢 Decidir si a futuro quieren migrar a un Google Apps Script propio,

@@ -79,24 +79,41 @@ const CONTENIDO = {
      gratuito y NO pide crear ninguna cuenta.
 
      ⚠️ PASO OBLIGATORIO LA PRIMERA VEZ (solo se hace una vez):
-        1. Entren al sitio y manden un mensaje de prueba desde la
-           página de Contacto.
-        2. Les va a llegar un correo de FormSubmit pidiendo confirmar.
-           Ábranlo y den clic en el botón de activación.
-        3. Listo: desde ese momento TODOS los mensajes llegan solos
-           a corazondejoeldejesus.2002@gmail.com
+        1. Manden un mensaje de prueba desde la página de Contacto.
+        2. Al correo que esté en "endpoint" (ver abajo) le llega un
+           mensaje de FormSubmit pidiendo confirmar. Ábranlo y den
+           clic en el botón de activación. Revisen también la carpeta
+           de correo no deseado.
+        3. Listo: desde ese momento los mensajes llegan solos.
 
      Si "activo" está en false, el formulario vuelve a funcionar como
      antes: abre el programa de correo de quien escribe. Nunca se
      queda sin funcionar.
+
+     ------------------------------------------------------------------
+     📮 CÓMO ESTÁ CONFIGURADO HOY (y cómo entregarlo a la asociación)
+     ------------------------------------------------------------------
+     Durante el servicio social, el correo PRINCIPAL es el del
+     estudiante, porque es la cuenta a la que se tiene acceso para
+     hacer la activación. La asociación recibe COPIA de todo en
+     "copiaA", sin tener que activar nada.
+
+     👉 CUANDO LA ASOCIACIÓN TOME EL CONTROL, son dos cambios:
+        1. En "endpoint", cambiar el correo del estudiante por
+           corazondejoeldejesus.2002@gmail.com
+        2. Borrar la línea de "copiaA" (o poner ahí otro correo)
+        3. Repetir la activación del paso 1 con el correo nuevo
      ================================================================ */
   formulario: {
     activo: true,
 
-    // El servicio reenvía al correo que aparezca aquí. Si algún día
-    // cambia el correo de la asociación, cámbienlo también arriba en
-    // "contacto.correo".
-    endpoint: "https://formsubmit.co/ajax/corazondejoeldejesus.2002@gmail.com",
+    // Correo PRINCIPAL: es el que hay que activar una vez.
+    // Hoy: el del estudiante de servicio social (tiene acceso a esta bandeja).
+    endpoint: "https://formsubmit.co/ajax/fabianromo674@gmail.com",
+
+    // Copia automática para la asociación. No necesita activación:
+    // les llega desde el primer mensaje.
+    copiaA: "corazondejoeldejesus.2002@gmail.com",
 
     // Respuesta automática que recibe quien les escribe.
     // ✏️ EDITABLE
