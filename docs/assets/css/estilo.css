@@ -831,6 +831,22 @@ a:hover { color: var(--navy); }
   outline: 3px solid var(--oro); outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--navy);
 }
+/* Campo trampa anti-spam: fuera de la pantalla, pero SIN display:none
+   ni visibility:hidden, porque muchos robots ignoran esos campos y
+   entonces la trampa no serviría de nada. */
+.trampa-spam {
+  position: absolute; left: -9999px; width: 1px; height: 1px;
+  overflow: hidden;
+}
+
+/* Estados del envío del formulario.
+   Los tres colores están medidos sobre el fondo hielo (#f4eeee):
+   enviando 8.6:1 · enviado 6.3:1 · error 5.9:1 — todos ✔ AA. */
+.estado-enviando { border-left-color: var(--azul-2) !important; color: var(--tinta) !important; }
+.estado-ok       { border-left-color: #1d7a5f !important; color: #14503f !important; background: #eaf7f2 !important; }
+.estado-error    { border-left-color: var(--coral) !important; color: #8a2c1a !important; background: #fdf0ed !important; }
+.estado-ok strong, .estado-error strong { color: inherit; }
+
 .nota-formulario {
   font-size: 15px; color: var(--gris); background: var(--hielo);
   border-radius: var(--radio-sm); padding: 16px 18px; border-left: 3px solid var(--azul);

@@ -204,23 +204,31 @@
               <textarea id="mensaje" name="mensaje" required></textarea>
             </div>
 
+            <!-- Campo trampa para robots de spam: las personas no lo ven
+                 ni lo alcanzan con el teclado, pero los programas
+                 automáticos lo llenan y así los detectamos. -->
+            <div class="trampa-spam" aria-hidden="true">
+              <label for="_honey">No llenes este campo</label>
+              <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
+
             <p class="nota-formulario">
-              <strong>Por tu privacidad:</strong> este formulario no guarda tus datos en ningún
-              lado ni los envía a terceros. Solo abre tu programa de correo con el mensaje
-              listo. Si prefieres, escríbenos directamente a
+              <strong>Qué pasa con tus datos.</strong> Tu mensaje se envía al correo de la
+              asociación a través de un servicio llamado FormSubmit, que solo lo reenvía y no
+              lo publica. No usamos tus datos para nada más, no te agregamos a ninguna lista
+              y no hay rastreadores en esta página. Si prefieres no usar el formulario,
+              escríbenos directamente a
               <a data-correo data-correo-texto href="mailto:corazondejoeldejesus.2002@gmail.com">corazondejoeldejesus.2002@gmail.com</a>.
             </p>
 
             <p>
-              <button class="boton" type="submit">Abrir mi correo con el mensaje</button>
+              <button class="boton" type="submit">Enviar mensaje</button>
             </p>
 
-            <p class="nota-formulario" data-aviso-envio tabindex="-1" hidden
-               style="border-left-color:var(--menta)">
-              ✅ <strong>Ya se abrió tu programa de correo.</strong> Revísalo y dale «Enviar»
-              para que nos llegue. Si no se abrió nada, copia nuestro correo y escríbenos
-              directamente: <span data-campo="correo">corazondejoeldejesus.2002@gmail.com</span>
-            </p>
+            <!-- Aquí aparece el estado del envío. El aria-live hace que un
+                 lector de pantalla lo anuncie sin quitarle el foco a nadie. -->
+            <p class="nota-formulario" data-aviso-envio hidden
+               role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>

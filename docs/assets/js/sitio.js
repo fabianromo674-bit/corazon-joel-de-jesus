@@ -793,31 +793,102 @@
     var form = $("[data-formulario]");
     if (!form) return;
 
+    var cfg = datos.formulario || {};
+    var aviso = $("[data-aviso-envio]");
+    var boton = $("button[type=submit]", form);
+    var textoBoton = boton ? boton.textContent : "Enviar";
+
+    /* Muestra el estado del envío. Lleva aria-live, así que un lector
+       de pantalla anuncia solo lo que va pasando sin mover el foco. */
+    function estado(tipo, html) {
+      if (!aviso) return;
+      aviso.hidden = false;
+      aviso.className = "nota-formulario estado-" + tipo;
+      aviso.innerHTML = html;
+    }
+
+    /* Respaldo: si el servicio no responde, el mensaje NO se pierde.
+       Se abre el programa de correo con todo ya escrito. */
+    function abrirCorreo(d) {
+      var cuerpo =
+        "Nombre: " + d.nombre + "\n" +
+        "Correo de contacto: " + d.correo + "\n" +
+        "Motivo: " + d.motivo + "\n\n" +
+        "Mensaje:\n" + d.mensaje + "\n\n" +
+        "— Enviado desde el formulario del sitio web.";
+      window.location.href = "mailto:" + datos.contacto.correo +
+        "?subject=" + encodeURIComponent("[Sitio web] " + d.motivo + " — " + d.nombre) +
+        "&body=" + encodeURIComponent(cuerpo);
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      var nombre = $("#nombre", form).value.trim();
-      var correo = $("#correo", form).value.trim();
-      var motivo = $("#motivo", form).value;
-      var mensaje = $("#mensaje", form).value.trim();
+      // Trampa anti-robots: es un campo invisible para las personas.
+      // Si viene lleno, quien lo llenó fue un programa automático.
+      var trampa = $("[name=_honey]", form);
+      if (trampa && trampa.value) return;
 
-      var asunto = "[Sitio web] " + motivo + " — " + nombre;
-      var cuerpo =
-        "Nombre: " + nombre + "\n" +
-        "Correo de contacto: " + correo + "\n" +
-        "Motivo: " + motivo + "\n\n" +
-        "Mensaje:\n" + mensaje + "\n\n" +
-        "— Enviado desde el formulario del sitio web.";
+      var d = {
+        nombre: $("#nombre", form).value.trim(),
+        correo: $("#correo", form).value.trim(),
+        motivo: $("#motivo", form).value,
+        mensaje: $("#mensaje", form).value.trim()
+      };
 
-      window.location.href = "mailto:" + datos.contacto.correo +
-        "?subject=" + encodeURIComponent(asunto) +
-        "&body=" + encodeURIComponent(cuerpo);
-
-      var ok = $("[data-aviso-envio]", form.parentNode) || $("[data-aviso-envio]");
-      if (ok) {
-        ok.hidden = false;
-        ok.focus();
+      if (!d.nombre || !d.correo || !d.mensaje) {
+        estado("error", "⚠️ Faltan datos: revisa tu nombre, tu correo y tu mensaje.");
+        return;
       }
+
+      // Sin servicio configurado: comportamiento de siempre (abrir correo)
+      if (!cfg.activo || !cfg.endpoint || typeof fetch !== "function") {
+        abrirCorreo(d);
+        estado("ok", "✅ <strong>Se abrió tu programa de correo.</strong> " +
+          "Revísalo y dale «Enviar» para que nos llegue.");
+        return;
+      }
+
+      estado("enviando", "⏳ Enviando tu mensaje…");
+      if (boton) { boton.disabled = true; boton.textContent = "Enviando…"; }
+
+      fetch(cfg.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          nombre: d.nombre,
+          correo: d.correo,
+          motivo: d.motivo,
+          mensaje: d.mensaje,
+          // El asunto lleva el motivo: así la asociación puede crear
+          // filtros en Gmail y clasificar los mensajes solos.
+          _subject: "[Sitio web · " + d.motivo + "] " + d.nombre,
+          _template: "table",
+          _autoresponse: cfg.respuestaAutomatica || ""
+        })
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) {
+          var ok = res && (res.success === true || res.success === "true");
+          if (!ok) throw new Error(res && res.message ? res.message : "El servicio no confirmó el envío");
+          form.reset();
+          estado("ok",
+            "✅ <strong>¡Mensaje enviado!</strong> Ya llegó al correo de la asociación. " +
+            "Te respondemos pronto — revisa también tu bandeja de correo no deseado.");
+        })
+        .catch(function (err) {
+          // No perdemos el mensaje: se abre el correo con todo escrito.
+          estado("error",
+            "⚠️ <strong>No pudimos enviarlo automáticamente.</strong> " +
+            "Te abrimos tu programa de correo con el mensaje ya escrito para que " +
+            "solo le des «Enviar». Si no se abre, escríbenos a " +
+            "<strong>" + datos.contacto.correo + "</strong>.");
+          console.error("[Corazón de Joel] Formulario:", err.message);
+          setTimeout(function () { abrirCorreo(d); }, 900);
+        })
+        .then(function () {
+          if (boton) { boton.disabled = false; boton.textContent = textoBoton; }
+        });
     });
   }
 

@@ -45,7 +45,8 @@ todo lo demás.
 | Cambiar los roles del equipo | `contenido.js` → `equipo` |
 | Cambiar las preguntas de donantes | `contenido.js` → `preguntas` |
 | Cambiar un párrafo largo de una página | Abrir el `.html` de esa página y buscar `✏️ EDITABLE` |
-| **Publicar los cambios en internet** | Ver la sección 6 de esta guía |
+| **Que me lleguen los mensajes del formulario** | ⚠️ Ver la **sección 6** — hay que activarlo una sola vez |
+| **Publicar los cambios en internet** | Ver la sección 7 de esta guía |
 
 **Casi todo se edita en un solo archivo:** `docs/assets/js/contenido.js`
 
@@ -223,7 +224,75 @@ ahí la más representativa.
 
 ---
 
-## 🚀 6. Cómo publicar los cambios en internet
+## 📬 6. El formulario de contacto (¡PASO OBLIGATORIO!)
+
+Cuando alguien llena el formulario de la página de Contacto, el mensaje
+**llega solo al correo de la asociación**. Pero hay que activarlo una vez.
+
+### ⚠️ Actívenlo así (5 minutos, se hace UNA sola vez)
+
+1. Entren al sitio publicado, vayan a **Contacto** y manden un mensaje de
+   prueba (pueden escribir «prueba» en todos los campos).
+2. Revisen la bandeja de **corazondejoeldejesus.2002@gmail.com**. Va a llegar
+   un correo de **FormSubmit** pidiendo confirmar la dirección.
+   > Si no lo ven, revisen la carpeta de **correo no deseado / spam**.
+3. Ábranlo y den clic en el botón de activación.
+4. Listo. Desde ese momento **todos** los mensajes del formulario llegan solos
+   a su correo, para siempre. No hay que volver a hacer nada.
+
+> **Mientras no lo activen**, el formulario no se rompe: le abre a la persona
+> su programa de correo con el mensaje ya escrito. Nadie se queda sin poder
+> contactarlos.
+
+### Qué recibe la asociación
+
+Cada mensaje llega con un asunto así:
+
+```
+[Sitio web · Quiero ser voluntario] Ana Ramírez
+```
+
+Y quien escribió recibe **una respuesta automática** diciéndole que su mensaje
+llegó y que le van a responder. Ese texto se edita en `contenido.js` →
+`formulario` → `respuestaAutomatica`.
+
+### 🗂️ Cómo convertir el correo en un CRM sencillo (recomendado)
+
+Como el asunto siempre incluye el motivo, Gmail puede clasificar los mensajes
+solo. Háganlo una vez y su bandeja se organiza para siempre:
+
+1. En Gmail, den clic en el buscador y luego en **Mostrar opciones de búsqueda**.
+2. En el campo **Asunto** escriban: `[Sitio web · Quiero donar]`
+3. Den clic en **Crear filtro**.
+4. Marquen **Aplicar la etiqueta** → **Crear etiqueta nueva** → llámenla
+   `Donantes`. Marquen también **No enviar nunca a Spam**.
+5. Repitan para los otros motivos, con etiquetas como
+   `Voluntariado`, `Alianzas`, `Historias`, `Talleres`.
+
+Desde entonces, cada persona que escribe queda archivada en su carpeta y
+pueden ver de un vistazo cuántos donantes o voluntarios llegaron este mes.
+
+### Si quieren que los datos NO pasen por ningún servicio externo
+
+Hoy el mensaje viaja por **FormSubmit**, que solo lo reenvía (no lo publica ni
+lo vende), y así está explicado en la página de Contacto. Si algún día
+prefieren que todo quede dentro de su propia cuenta de Google —y de paso tener
+los contactos en una hoja de cálculo—, se puede cambiar por un **Google Apps
+Script** gratuito. Es un cambio de una línea en `contenido.js` → `formulario`
+→ `endpoint`. Pídanle a alguien con conocimientos técnicos que les ayude, o
+escríbannos.
+
+### Si cambia el correo de la asociación
+
+Hay que cambiarlo en **dos lugares** de `contenido.js`:
+- en `contacto` → `correo`
+- en `formulario` → `endpoint` (la dirección va al final de esa línea)
+
+Y volver a hacer la activación del punto 1.
+
+---
+
+## 🚀 7. Cómo publicar los cambios en internet
 
 El sitio vive en **GitHub Pages**, que es gratuito y no caduca. Ya está todo
 configurado; solo hay que subir los cambios.
@@ -264,7 +333,7 @@ GitHub tarda un poco en publicar.
 
 ---
 
-## ♿ 7. Por qué el sitio se ve así (no lo cambien sin avisar)
+## ♿ 8. Por qué el sitio se ve así (no lo cambien sin avisar)
 
 El diseño no es decorativo: está construido para que **cualquier persona** pueda
 usarlo, incluidos donantes mayores y personas con discapacidad visual.

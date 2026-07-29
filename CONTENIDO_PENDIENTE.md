@@ -208,6 +208,26 @@ Los 4 espacios de la galería están listos y dicen «Próximamente».
 
 ---
 
+## 🔴 8-bis. ACTIVAR EL FORMULARIO DE CONTACTO
+
+El formulario ya envía los mensajes al correo de la asociación, pero necesita
+**una activación única** que solo puede hacer quien tenga acceso a la bandeja
+de `corazondejoeldejesus.2002@gmail.com`.
+
+- [ ] 🔴 Mandar un mensaje de prueba desde la página de Contacto del sitio
+- [ ] 🔴 Abrir el correo de **FormSubmit** que llega (revisar también spam) y
+      dar clic en el botón de activación
+- [ ] 🟡 Crear los filtros de Gmail para clasificar por motivo
+      (Donantes / Voluntariado / Alianzas) — instrucciones en el README
+- [ ] 🟢 Decidir si a futuro quieren migrar a un Google Apps Script propio,
+      para que los datos no pasen por ningún servicio externo y queden
+      además en una hoja de cálculo
+
+> **Mientras no se active**, nadie se queda sin poder escribir: el formulario
+> abre el programa de correo de la persona con el mensaje ya redactado.
+
+---
+
 ## 📌 Si solo pueden hacer 3 cosas
 
 1. 🔴 **Conseguir el logo original con el nombre corregido** — hoy dice

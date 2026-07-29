@@ -71,6 +71,42 @@ const CONTENIDO = {
   },
 
   /* ================================================================
+     1-bis) FORMULARIO DE CONTACTO — a dónde llegan los mensajes
+     ----------------------------------------------------------------
+     Un sitio como este (gratuito, sin servidor propio) NO puede mandar
+     correos por sí mismo. Necesita un servicio que reciba el formulario
+     y lo reenvíe al correo de la asociación. Usamos FormSubmit, que es
+     gratuito y NO pide crear ninguna cuenta.
+
+     ⚠️ PASO OBLIGATORIO LA PRIMERA VEZ (solo se hace una vez):
+        1. Entren al sitio y manden un mensaje de prueba desde la
+           página de Contacto.
+        2. Les va a llegar un correo de FormSubmit pidiendo confirmar.
+           Ábranlo y den clic en el botón de activación.
+        3. Listo: desde ese momento TODOS los mensajes llegan solos
+           a corazondejoeldejesus.2002@gmail.com
+
+     Si "activo" está en false, el formulario vuelve a funcionar como
+     antes: abre el programa de correo de quien escribe. Nunca se
+     queda sin funcionar.
+     ================================================================ */
+  formulario: {
+    activo: true,
+
+    // El servicio reenvía al correo que aparezca aquí. Si algún día
+    // cambia el correo de la asociación, cámbienlo también arriba en
+    // "contacto.correo".
+    endpoint: "https://formsubmit.co/ajax/corazondejoeldejesus.2002@gmail.com",
+
+    // Respuesta automática que recibe quien les escribe.
+    // ✏️ EDITABLE
+    respuestaAutomatica:
+      "Recibimos tu mensaje en el Voluntariado El Corazón de Joel de Jesús. " +
+      "Gracias por escribirnos: una persona del equipo lo va a leer y te " +
+      "responderá pronto. Si es algo urgente, llámanos al 33 1670 9118.",
+  },
+
+  /* ================================================================
      2) LEMA — la frase entre comillas de la portada de Inicio
      ================================================================ */
   lema: "«Nuestra niñez en situación vulnerable nos necesita»",
